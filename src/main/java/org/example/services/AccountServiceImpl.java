@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AccountServiceImpl implements AccountService {
 
-    AccountRepo accountRepository;
+    private final AccountRepo accountRepository;
 
     public AccountServiceImpl(AccountRepo accountRepository) {
         this.accountRepository = accountRepository;
@@ -26,10 +26,4 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.listAccounts(accountHolder);
     }
 
-//    @Override
-//    public void sendMoney(String senderIBAN, String receiverIBAN, BigDecimal euro) {
-//        Account senderAccount = accountRepository.get(senderIBAN);
-//        Account receiverAccount = accountRepository.get(receiverIBAN);
-//        senderAccount.sendMoney(receiverAccount, euro);
-//    }
 }

@@ -5,6 +5,7 @@ import org.example.models.AccountHolder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class InMemoryAccountHolderRepo implements AccountHolderRepo{
     private List<AccountHolder> accountHolders = new ArrayList<>();
@@ -16,7 +17,7 @@ public class InMemoryAccountHolderRepo implements AccountHolderRepo{
     @Override
     public AccountHolder getAccountHolder(String email) throws NoSuchElementException {
         for (AccountHolder accountHolder : accountHolders) {
-            if (accountHolder.getEmail() == email) {
+            if (Objects.equals(accountHolder.getEmail(), email)) {
                 return accountHolder;
             }
         }

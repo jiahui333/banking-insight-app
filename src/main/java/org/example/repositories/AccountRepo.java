@@ -10,5 +10,6 @@ public interface AccountRepo {
     List<Account> listAccounts(AccountHolder accountHolder);
 
     void storeAccount(Account account);
+    Account getAccount(String IBAN);
 
 }

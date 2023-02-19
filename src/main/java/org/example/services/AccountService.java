@@ -10,6 +10,5 @@ public interface AccountService {
     void createAccount(AccountHolder accountholder, String IBAN);
 
     //list
-
     List<Account> listAccounts(AccountHolder accountHolder);
 }

@@ -5,7 +5,7 @@ import org.example.repositories.AccountHolderRepo;
 import org.example.repositories.InMemoryAccountHolderRepo;
 
 public class AccountHolderServiceImpl implements AccountHolderService{
-    AccountHolderRepo accountHolderRepo;
+    private final AccountHolderRepo accountHolderRepo;
 
     public AccountHolderServiceImpl(AccountHolderRepo accountHolderRepo) {
         this.accountHolderRepo = accountHolderRepo;

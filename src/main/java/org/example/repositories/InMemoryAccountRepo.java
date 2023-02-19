@@ -5,7 +5,6 @@ import org.example.models.AccountHolder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class InMemoryAccountRepo implements AccountRepo{
 
@@ -14,17 +13,28 @@ public class InMemoryAccountRepo implements AccountRepo{
 
     @Override
     public List<Account> listAccounts(AccountHolder accountHolder) {
-        List<Account> result = new ArrayList<>();
+        List<Account> accountList = new ArrayList<>();
         for (Account account : accounts) {
             if (account.getAccountHolder() == accountHolder) {
-                result.add(account);
+                accountList.add(account);
             }
         }
-        return result;
+        return accountList;
     }
 
     @Override
     public void storeAccount(Account account) {
         accounts.add(account);
+    }
+
+    @Override
+    public Account getAccount(String IBAN) {
+        Account resultAccount = null;
+        for (Account account : accounts) {
+            if (account.getIBAN() == IBAN) {
+                resultAccount = account;
+            }
+        }
+        return resultAccount;
     }
 }

@@ -3,7 +3,7 @@ package org.example.models;
 import java.math.BigDecimal;
 
 public class Account {
-    private String IBAN = "";
+    private String IBAN;
 
     private final AccountHolder accountHolder;
     private BigDecimal balance = BigDecimal.ZERO;
@@ -17,10 +17,14 @@ public class Account {
         return accountHolder;
     }
 
+    public String getIBAN() {
+        return IBAN;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
-                "IBAN='" + IBAN + '\'' +
+                "IBAN='" + IBAN + "\'" +
                 ", accountHolder=" + accountHolder.getEmail() +
                 ", balance=" + balance +
                 '}';
@@ -30,8 +34,8 @@ public class Account {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
+    public void addBalance(BigDecimal balance) {
+        this.balance = this.balance.add(balance);
     }
 
 

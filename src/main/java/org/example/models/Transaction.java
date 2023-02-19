@@ -1,5 +1,28 @@
 package org.example.models;
 
-public class Transaction {
+import java.math.BigDecimal;
 
+public class Transaction {
+    private Account account;
+    private BigDecimal amount;
+    private String type;
+
+    public Transaction(Account account, BigDecimal amount, String type) {
+        this.account = account;
+        this.amount = amount;
+        this.type = type;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "IBAN='" + account.getIBAN() + "'" +
+                ", amount=" + amount +
+                ", type=" + type +
+                '}';
+    }
 }
