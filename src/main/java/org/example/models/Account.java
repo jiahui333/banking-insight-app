@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.math.BigDecimal;
 
 public class Account {

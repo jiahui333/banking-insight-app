@@ -5,12 +5,18 @@ import org.example.models.AccountHolder;
 import org.example.models.Transaction;
 import org.example.repositories.*;
 import org.example.services.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+
+
         //Dependency
         AccountHolderRepo inMemoryAccountHolderRepo = new InMemoryAccountHolderRepo();
         //Injection
