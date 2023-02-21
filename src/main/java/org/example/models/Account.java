@@ -1,12 +1,28 @@
 package org.example.models;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "accounts")
 public class Account {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(nullable = false)
     private String IBAN;
 
-    private final User user;
+    @Column(nullable = false)
     private BigDecimal balance = BigDecimal.ZERO;
+
+    public Account() {
+    }
 
     public Account(User user, String IBAN) {
         this.user = user;
@@ -21,6 +37,18 @@ public class Account {
         return IBAN;
     }
 
+//    public BigDecimal getBalance() {
+//        return balance;
+//    }
+//
+//    public void setBalance(BigDecimal balance) {
+//        this.balance = balance;
+//    }
+
+    public void addBalance(BigDecimal balance) {
+        this.balance = this.balance.add(balance);
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -28,14 +56,6 @@ public class Account {
                 ", user=" + user.getUsername() +
                 ", balance=" + balance +
                 '}';
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void addBalance(BigDecimal balance) {
-        this.balance = this.balance.add(balance);
     }
 
 
