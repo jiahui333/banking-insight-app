@@ -1,21 +1,23 @@
 package org.example.repositories;
 
 import org.example.models.Account;
-import org.example.models.AccountHolder;
+import org.example.models.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class InMemoryAccountRepo implements AccountRepo{
 
     private List<Account> accounts = new ArrayList<>();
 
 
     @Override
-    public List<Account> listAccounts(AccountHolder accountHolder) {
+    public List<Account> listAccounts(User user) {
         List<Account> accountList = new ArrayList<>();
         for (Account account : accounts) {
-            if (account.getAccountHolder() == accountHolder) {
+            if (account.getUser() == user) {
                 accountList.add(account);
             }
         }

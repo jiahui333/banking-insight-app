@@ -1,14 +1,13 @@
 package org.example.services;
 
 import org.example.models.Account;
-import org.example.models.AccountHolder;
+import org.example.models.User;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface AccountService {
-    void createAccount(AccountHolder accountholder, String IBAN);
+    void createAccount(User user, String IBAN);
 
     //list
-    List<Account> listAccounts(AccountHolder accountHolder);
+    List<Account> listAccounts(User user);
 }

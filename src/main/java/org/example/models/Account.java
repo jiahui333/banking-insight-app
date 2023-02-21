@@ -1,22 +1,20 @@
 package org.example.models;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import java.math.BigDecimal;
 
 public class Account {
     private String IBAN;
 
-    private final AccountHolder accountHolder;
+    private final User user;
     private BigDecimal balance = BigDecimal.ZERO;
 
-    public Account(AccountHolder accountHolder, String IBAN) {
-        this.accountHolder = accountHolder;
+    public Account(User user, String IBAN) {
+        this.user = user;
         this.IBAN = IBAN;
     }
 
-    public AccountHolder getAccountHolder() {
-        return accountHolder;
+    public User getUser() {
+        return user;
     }
 
     public String getIBAN() {
@@ -27,7 +25,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "IBAN='" + IBAN + "\'" +
-                ", accountHolder=" + accountHolder.getEmail() +
+                ", user=" + user.getUsername() +
                 ", balance=" + balance +
                 '}';
     }
