@@ -1,10 +1,12 @@
 package org.example.repositories;
 
 import org.example.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepo {
-    //create a new account holder
-    void storeUser(User user);
-    //read an account holder
-    User getUser(String username, String password);
+import java.rmi.NoSuchObjectException;
+import java.util.NoSuchElementException;
+
+public interface UserRepo extends JpaRepository<User, Long> {
+//    User findUserByLogIn(String username, String password) throws NoSuchElementException;
+
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class InMemoryAccountRepo implements AccountRepo{
 
-    private List<Account> accounts = new ArrayList<>();
+    private final List<Account> accounts = new ArrayList<>();
 
 
     @Override

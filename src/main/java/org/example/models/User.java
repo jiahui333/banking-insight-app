@@ -30,25 +30,37 @@ public class User {
         this.password = password;
     }
 
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public String getSecondName() {
-//        return secondName;
-//    }
+    public Long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
 
     public String getUsername() {
         return username;
     }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
+
+    // Without the setter it will show  .PropertyValueException:  not-null property references a null or transient value : org.example.models.User.firstName, but it seems other properties dont matter
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+//    public void setSecondName(String secondName) {
+//        this.secondName = secondName;
+//    }
+
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
 //    public void setPassword(String password) {
 //        this.password = password;

@@ -2,12 +2,16 @@ package org.example.services;
 
 import org.example.models.User;
 
+import java.util.Optional;
+
 public interface UserService {
 
-    void createUser(String firstName, String secondName, String username, String password);
+    Optional<User> findUserById(Long id);
+    void saveUser(User user);
 
-    void changeUsername(String oldUsername, String password, String newUsername);
 
-    User readUser(String username, String password);
+//    void changeUsername(String oldUsername, String password, String newUsername) throws NoSuchObjectException;
+//User logIn(String username, String password);
+//
 
 }
