@@ -2,28 +2,30 @@ package org.example.services;
 
 import org.example.models.Category;
 import org.example.repositories.CategoryRepo;
-import org.example.repositories.InMemoryCategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
 
     @Autowired
-    private CategoryRepo inMemoryCategoryRepo;
+    private CategoryRepo categoryRepo;
 
     @Override
-    public void createCategory(String name) {
-        inMemoryCategoryRepo.storeCategory(name);
+    public void saveCategory(Category category) {
+        categoryRepo.save(category);
     }
 
     @Override
-    public void renameCategory(Category category, String newName) {
-        inMemoryCategoryRepo.renameCategory(category, newName);
+    public Optional<Category> findCategoryById(Long id) {
+        return categoryRepo.findById(id);
     }
 
-    @Override
-    public void autoCategorize() {
 
-    }
+//    @Override
+//    public void autoCategorize() {
+//
+//    }
 }

@@ -9,7 +9,7 @@ import java.rmi.NoSuchObjectException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -25,12 +25,6 @@ public class UserController {
         userService.saveUser(user);
     }
 
-//    public User logIn(String username, String password) throws NoSuchObjectException {
-//        System.out.println("controller" + username);
-//        System.out.println(password);
-//        return userService.logIn(username, password);
-
-//    }
 
 //    @PutMapping
 //    public void putUser(String oldUsername, String password, String newUsername) throws NoSuchObjectException {

@@ -24,32 +24,44 @@ public class Transaction {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public Transaction() {
+//    public Transaction() {
+//    }
+
+//    public Transaction(BigDecimal amount, String flowType, Category category) {
+//
+//        this.amount = amount;
+//        this.flowType = flowType;
+//        this.category = category;
+//    }
+
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public Transaction(Account account, BigDecimal amount, String flowType, Category category) {
-        this.account = account;
-        this.amount = amount;
-        this.flowType = flowType;
-        this.category = category;
+    public String getFlowType() {
+        return flowType;
     }
 
     public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public Account getAccount() {
         return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
-                "IBAN='" + account.getIBAN() + "'" +
+                "IBAN='" + account.getIban() + "'" +
                 ", amount=" + amount +
                 ", type=" + flowType +
                 '}';

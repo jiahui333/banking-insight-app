@@ -1,34 +1,36 @@
 package org.example.services;
-
-
 import org.example.models.Account;
 import org.example.models.Category;
 import org.example.models.Transaction;
 import org.example.repositories.TransactionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
+@Service
 public class TransactionServiceImpl implements TransactionService{
 
-    private final TransactionRepo transactionRepository;
+    @Autowired
+    private TransactionRepo transactionRepo;
 
-    public TransactionServiceImpl(TransactionRepo transactionRepository) {
-        this.transactionRepository = transactionRepository;
-    }
     @Override
-    public void createTransaction (Account account, BigDecimal amount, String type, Category category) {
-        Transaction newTransaction = new Transaction(account, amount, type, category);
-        transactionRepository.storeTransaction(newTransaction);
-        if (Objects.equals(type, "income")) {
-            account.addBalance(amount);
-        }
+    public void saveTransaction(Transaction transaction, Account account, Category category) {
+        transaction.setCategory(category);
+        transaction.setAccount(account);
+        transactionRepo.save(transaction);
     }
 
     @Override
-    public List<Transaction> listTransactions(Account account) {
-        return transactionRepository.listTransactions(account);
+    public Optional<Transaction> findTransactionById(Long id) {
+        return transactionRepo.findById(id);
     }
+
+    @Override
+    public List<Transaction> findAllTransactions(Account account) {
+        return transactionRepo.findAll();
+    }
+
+
 }

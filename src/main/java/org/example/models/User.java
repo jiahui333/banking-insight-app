@@ -49,20 +49,4 @@ public class User {
         return password;
     }
 
-    // Without the setter it will show  .PropertyValueException:  not-null property references a null or transient value : org.example.models.User.firstName, but it seems other properties dont matter
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-//    public void setSecondName(String secondName) {
-//        this.secondName = secondName;
-//    }
-
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
 }

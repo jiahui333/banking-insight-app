@@ -28,12 +28,6 @@ public class UserServiceImpl implements UserService {
 //    public User logIn(String username, String password) throws NoSuchElementException {
 //        return userRepo.findUserByLogIn(username, password);
 //    }
-
-//    @Override
-//    public void createUser(String firstName, String secondName, String userName, String password) {
-//        User user = new User(firstName, secondName, userName, password);
-//        userRepo.save(user);
-//    }
 //
 //    @Override
 //    public void changeUsername(String oldUsername, String password, String newUsername) throws NoSuchElementException {

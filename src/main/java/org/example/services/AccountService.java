@@ -3,11 +3,11 @@ package org.example.services;
 import org.example.models.Account;
 import org.example.models.User;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface AccountService {
-    void createAccount(User user, String IBAN);
+    Optional<Account> findAccountById(Long id);
+    void saveAccount(Account account, User user);
 
-    //list
-    List<Account> listAccounts(User user);
+    Account findAccountByUser(User user);
 }

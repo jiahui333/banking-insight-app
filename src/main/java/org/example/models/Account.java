@@ -16,7 +16,7 @@ public class Account {
     private User user;
 
     @Column(nullable = false)
-    private String IBAN;
+    private String iban;
 
     @Column(nullable = false)
     private BigDecimal balance = BigDecimal.ZERO;
@@ -24,35 +24,35 @@ public class Account {
     public Account() {
     }
 
-    public Account(User user, String IBAN) {
-        this.user = user;
-        this.IBAN = IBAN;
+    public Account(String iban, BigDecimal balance) {
+        this.iban = iban;
+        this.balance = balance;
     }
 
     public User getUser() {
         return user;
     }
 
-    public String getIBAN() {
-        return IBAN;
+    public String getIban() {
+        return iban;
     }
 
-//    public BigDecimal getBalance() {
-//        return balance;
-//    }
-//
-//    public void setBalance(BigDecimal balance) {
-//        this.balance = balance;
-//    }
-
-    public void addBalance(BigDecimal balance) {
-        this.balance = this.balance.add(balance);
+    public BigDecimal getBalance() {
+        return balance;
     }
+
+    public void setUser(User user) {
+    this.user = user;
+}
+
+//    public void addBalance(BigDecimal balance) {
+//        this.balance = this.balance.add(balance);
+//    }
 
     @Override
     public String toString() {
         return "Account{" +
-                "IBAN='" + IBAN + "\'" +
+                "IBAN='" + iban + "\'" +
                 ", user=" + user.getUsername() +
                 ", balance=" + balance +
                 '}';

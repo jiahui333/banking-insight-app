@@ -2,10 +2,10 @@ package org.example.services;
 
 import org.example.models.Category;
 
+import java.util.Optional;
+
 public interface CategoryService {
-    void createCategory(String name);
+    void saveCategory(Category category);
+    Optional<Category> findCategoryById(Long id);
 
-    void renameCategory(Category category, String newName);
-
-    void autoCategorize();
 }

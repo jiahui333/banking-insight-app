@@ -6,27 +6,29 @@ import org.example.repositories.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
-    private AccountRepo accountRepository;
-
-//    public AccountServiceImpl(AccountRepo accountRepository) {
-//        this.accountRepository = accountRepository;
-//    }
+    private AccountRepo accountRepo;
 
     @Override
-    public void createAccount(User user, String IBAN) {
-        Account account = new Account(user, IBAN);
-        accountRepository.storeAccount(account);
+    public void saveAccount(Account account, User user) {
+        account.setUser(user);
+        accountRepo.save(account);
     }
 
     @Override
-    public List<Account> listAccounts(User user) {
-        return accountRepository.listAccounts(user);
+    public Account findAccountByUser(User user) {
+        return accountRepo.findByUser(user);
     }
+
+    @Override
+    public Optional<Account> findAccountById(Long id) {
+        return accountRepo.findById(id);
+    }
+
 
 }

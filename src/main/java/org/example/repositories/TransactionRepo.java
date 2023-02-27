@@ -1,16 +1,8 @@
 package org.example.repositories;
 
-import org.example.models.Account;
-import org.example.models.Category;
 import org.example.models.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface TransactionRepo {
-
-    List<Transaction> listTransactions(Account account);
-    void storeTransaction(Transaction transaction);
-
-    void addCategory(Transaction transaction, Category category);
+public interface TransactionRepo extends JpaRepository<Transaction, Long> {
 
 }
