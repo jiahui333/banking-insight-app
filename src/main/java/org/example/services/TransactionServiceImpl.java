@@ -28,8 +28,13 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public List<Transaction> findAllTransactions(Account account) {
-        return transactionRepo.findAll();
+    public List<Transaction> findAllTransactionsByAccount(Account account) {
+        return transactionRepo.findAllByAccount(account);
+    }
+
+    @Override
+    public void deleteTransactionById(Long id) {
+        transactionRepo.deleteById(id);
     }
 
 

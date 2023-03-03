@@ -1,7 +1,11 @@
 package org.example.models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "transactions")
@@ -13,7 +17,11 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Account account;
+
+    @Column
+    private String receiver = "Rabo cafe";
 
     @Column(nullable = false)
     private BigDecimal amount;
@@ -24,15 +32,8 @@ public class Transaction {
     @JoinColumn(name = "category_id")
     private Category category;
 
-//    public Transaction() {
-//    }
-
-//    public Transaction(BigDecimal amount, String flowType, Category category) {
-//
-//        this.amount = amount;
-//        this.flowType = flowType;
-//        this.category = category;
-//    }
+    @Column
+    private LocalDate localDate = LocalDate.now();
 
     public BigDecimal getAmount() {
         return amount;
@@ -42,12 +43,20 @@ public class Transaction {
         return flowType;
     }
 
+    public String getReceiver() {
+        return receiver;
+    }
+
     public Category getCategory() {
         return category;
     }
 
     public Account getAccount() {
         return account;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
     }
 
     public void setAccount(Account account) {

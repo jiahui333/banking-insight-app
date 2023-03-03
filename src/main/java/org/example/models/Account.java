@@ -1,5 +1,7 @@
 package org.example.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -21,14 +23,6 @@ public class Account {
     @Column(nullable = false)
     private BigDecimal balance = BigDecimal.ZERO;
 
-    public Account() {
-    }
-
-    public Account(String iban, BigDecimal balance) {
-        this.iban = iban;
-        this.balance = balance;
-    }
-
     public User getUser() {
         return user;
     }
@@ -45,9 +39,9 @@ public class Account {
     this.user = user;
 }
 
-//    public void addBalance(BigDecimal balance) {
-//        this.balance = this.balance.add(balance);
-//    }
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
 
     @Override
     public String toString() {

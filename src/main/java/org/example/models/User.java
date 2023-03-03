@@ -20,16 +20,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    public User() {
-    }
-
-    public User(String firstName, String secondName, String username, String password) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.username = username;
-        this.password = password;
-    }
-
     public Long getId() {
         return id;
     }

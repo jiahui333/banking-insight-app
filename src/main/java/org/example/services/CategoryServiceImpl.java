@@ -23,6 +23,17 @@ public class CategoryServiceImpl implements CategoryService{
         return categoryRepo.findById(id);
     }
 
+    //not finished
+    @Override
+    public Category updateCategoryName(Long id) {
+        return null;
+    }
+
+//    @Override
+//    public Category updateCategoryName(Long id) {
+//        return categoryRepo.
+//    }
+
 
 //    @Override
 //    public void autoCategorize() {

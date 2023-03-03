@@ -8,4 +8,5 @@ public interface CategoryService {
     void saveCategory(Category category);
     Optional<Category> findCategoryById(Long id);
 
+    Category updateCategoryName(Long id);
 }

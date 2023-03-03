@@ -6,6 +6,8 @@ import org.example.repositories.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,14 +23,26 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account findAccountByUser(User user) {
-        return accountRepo.findByUser(user);
+    public void updateAccountBalance(Long id, BigDecimal balance) {
+        Account currentAccount = accountRepo.findById(id).get();
+        currentAccount.setBalance(balance);
+        accountRepo.save(currentAccount);
     }
+
+    @Override
+    public void deleteAccountById(Long id) {
+        accountRepo.deleteById(id);
+    }
+
+    @Override
+    public List<Account> findAccountsByUser(User user) {
+        return accountRepo.findAllByUser(user);
+    }
+
 
     @Override
     public Optional<Account> findAccountById(Long id) {
         return accountRepo.findById(id);
     }
-
 
 }

@@ -32,14 +32,19 @@ public class TransactionCotroller {
     }
 
     @GetMapping("/{transaction_id}")
-    public Transaction transaction(@PathVariable("transaction_id") Long transaction_id) {
+    public Transaction findTransactionById(@PathVariable("transaction_id") Long transaction_id) {
         return transactionService.findTransactionById(transaction_id).get();
     }
 
-    @GetMapping("/all")
-    public List<Transaction> transactionList() {
+    @GetMapping
+    public List<Transaction> findAllTransactionsByAccount() {
         Account currentAccount = accountService.findAccountById(1L).get();
-        return transactionService.findAllTransactions(currentAccount);
+        return transactionService.findAllTransactionsByAccount(currentAccount);
+    }
+
+    @DeleteMapping("/{transaction_id}")
+    public void deleteTransaction(@PathVariable("transaction_id") Long transaction_id) {
+        transactionService.deleteTransactionById(transaction_id);
     }
 
 }
