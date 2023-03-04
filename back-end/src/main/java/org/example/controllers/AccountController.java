@@ -1,0 +1,55 @@
+package org.example.controllers;
+import com.fasterxml.jackson.databind.JsonNode;
+import org.example.models.Account;
+import org.example.models.Transaction;
+import org.example.models.User;
+import org.example.services.AccountService;
+import org.example.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/accounts")
+
+public class AccountController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private AccountService accountService;
+
+
+    @PostMapping
+    public void saveAccount(@RequestBody Account account) {
+        User currentUser = userService.findUserById(1L).get();
+        accountService.saveAccount(account, currentUser);
+    }
+
+    @GetMapping("/{account_id}")
+    public Account findAccountById (@PathVariable("account_id") Long account_id) {
+        return accountService.findAccountById(account_id).get();
+    }
+
+    @GetMapping
+    public List<Account> findAllAccountsByUser() {
+        User currentUser = userService.findUserById(1L).get();
+        return accountService.findAccountsByUser(currentUser);
+    }
+    @PutMapping("/{account_id}")
+    public void updateAccountBalance(@PathVariable("account_id") Long account_id, @RequestBody String balance) {
+        BigDecimal newBalance = BigDecimal.valueOf(Long.parseLong(balance));
+        accountService.updateAccountBalance(account_id, newBalance);
+    }
+
+    @DeleteMapping("/{account_id}")
+    public void deleteAccount(@PathVariable("account_id") Long account_id) {
+        accountService.deleteAccountById(account_id);
+    }
+
+
+}
