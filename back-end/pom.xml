@@ -11,19 +11,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>nl.yepp</groupId>
-    <artifactId>banking-insights-app</artifactId>
+    <artifactId>banking-insights-app-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>banking-insights-app</name>
+    <name>banking-insights-app-backend</name>
     <description>Banking insights app for the YEPP program</description>
     <properties>
         <java.version>11</java.version>
     </properties>
 
-<!--    <properties>-->
-<!--        <maven.compiler.source>11</maven.compiler.source>-->
-<!--        <maven.compiler.target>11</maven.compiler.target>-->
-<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-<!--    </properties>-->
     <dependencies>
         <dependency>
             <groupId>org.jetbrains</groupId>
