@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/transactions")
@@ -29,6 +30,9 @@ public class TransactionCotroller {
         Account currentAccount = accountService.findAccountById(1L).get();
         Category selectedCategory = categoryService.findCategoryById(1L).get();
         transactionService.saveTransaction(transaction,currentAccount,selectedCategory);
+        if ((transaction.getFlowType().equals("inflow"))) {
+            accountService.updateAccountBalance(transaction);
+        }
     }
 
     @GetMapping("/{transaction_id}")

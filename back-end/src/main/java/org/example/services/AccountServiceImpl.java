@@ -1,6 +1,7 @@
 package org.example.services;
 
 import org.example.models.Account;
+import org.example.models.Transaction;
 import org.example.models.User;
 import org.example.repositories.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void updateAccountBalance(Long id, BigDecimal balance) {
-        Account currentAccount = accountRepo.findById(id).get();
-        currentAccount.setBalance(balance);
+    public void updateAccountBalance(Transaction transaction) {
+        Account currentAccount = transaction.getAccount();
+        BigDecimal currentBalance = currentAccount.getBalance();
+        BigDecimal transactionAmount = transaction.getAmount();
+        BigDecimal newBalance = currentBalance.add(transactionAmount);
+        currentAccount.setBalance(newBalance);
         accountRepo.save(currentAccount);
     }
 

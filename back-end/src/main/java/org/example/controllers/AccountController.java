@@ -40,11 +40,6 @@ public class AccountController {
         User currentUser = userService.findUserById(1L).get();
         return accountService.findAccountsByUser(currentUser);
     }
-    @PutMapping("/{account_id}")
-    public void updateAccountBalance(@PathVariable("account_id") Long account_id, @RequestBody String balance) {
-        BigDecimal newBalance = BigDecimal.valueOf(Long.parseLong(balance));
-        accountService.updateAccountBalance(account_id, newBalance);
-    }
 
     @DeleteMapping("/{account_id}")
     public void deleteAccount(@PathVariable("account_id") Long account_id) {

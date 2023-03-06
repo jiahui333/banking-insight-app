@@ -1,6 +1,7 @@
 package org.example.services;
 
 import org.example.models.Account;
+import org.example.models.Transaction;
 import org.example.models.User;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ public interface AccountService {
 
     void saveAccount(Account account, User user);
 
-    void updateAccountBalance(Long id, BigDecimal balance);
+    void updateAccountBalance(Transaction transaction);
 
     void deleteAccountById(Long id);
     List<Account> findAccountsByUser(User user);
