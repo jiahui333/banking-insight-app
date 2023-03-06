@@ -4,9 +4,7 @@ As an account holder, I can log in my account with the name and the password.
 
 As an account holder, I can see an overview of my accounts with respective IBAN numbers.
 
-As an account holder, I can send money to another account.
-
-As an account holder, I can receive money from another account.
+As an account holder, I can add transactions to my account.
 
 As an account holder, I can check my balance and transactions of each account.
 
