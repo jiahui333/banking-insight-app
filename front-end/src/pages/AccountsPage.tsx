@@ -24,6 +24,7 @@ export default function AccountsPage() {
     const listAccounts = accounts.map((account) => {
         console.log(account);
         console.log(typeof account)
+        console.log(typeof account.iban)
         return (
             <tr>
                 <td>{account.user.id}</td>

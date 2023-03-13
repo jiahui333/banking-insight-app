@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-//@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/transactions")
 public class TransactionCotroller {
 

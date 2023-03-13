@@ -21,7 +21,7 @@ public class Transaction {
     private Account account;
 
     @Column
-    private String receiver = "Rabo cafe";
+    private String receiver;
 
     @Column(nullable = false)
     private BigDecimal amount;
