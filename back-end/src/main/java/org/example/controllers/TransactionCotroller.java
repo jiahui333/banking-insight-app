@@ -39,6 +39,7 @@ public class TransactionCotroller {
     @GetMapping("/{transaction_id}")
     public Transaction findTransactionById(@PathVariable("transaction_id") Long transaction_id) {
         return transactionService.findTransactionById(transaction_id).get();
+        // add orElseThrow()
     }
 
     @GetMapping

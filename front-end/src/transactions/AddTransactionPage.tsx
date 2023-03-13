@@ -1,9 +1,9 @@
 import React, {ChangeEvent, useState} from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
-export default function AddTransaction() {
+export default function AddTransactionPage() {
 
     const navigate = useNavigate();
 
@@ -62,6 +62,9 @@ export default function AddTransaction() {
                 </label>
                 <br />
                 <input type="submit" value="Submit" />
+                <Link to={"/transactions"}>
+                    <input type="button" value="Cancel" />
+                </Link>
             </form>
         </div>
     )

@@ -35,6 +35,10 @@ public class Transaction {
     @Column
     private LocalDate localDate = LocalDate.now();
 
+    public Long getId() {
+        return id;
+    }
+
     public BigDecimal getAmount() {
         return amount;
     }

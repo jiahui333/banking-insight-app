@@ -1,8 +1,8 @@
 import './App.css';
-import TransactionsPage from "./pages/TransactionsPage";
+import TransactionsPage from "./transactions/TransactionsPage";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import AddTransaction from "./transactions/AddTransaction";
-import AccountsPage from "./pages/AccountsPage";
+import AddTransactionPage from "./transactions/AddTransactionPage";
+import AccountsPage from "./accounts/AccountsPage";
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
             <Routes>
                 <Route path="/accounts" element={<AccountsPage/>} />
                 <Route path="/transactions" element={<TransactionsPage/>} />
-                <Route path="/add-transaction" element={<AddTransaction/>} />
+                <Route path="/add-transaction" element={<AddTransactionPage/>} />
             </Routes>
         </Router>
     </div>
