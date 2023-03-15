@@ -1,4 +1,5 @@
 import {Account} from "./AccountType";
+import {Category} from "./CategoryType";
 
 export type Transaction = {
         id: number;
@@ -6,6 +7,6 @@ export type Transaction = {
         receiver: string;
         amount: number;
         flowType: string;
-        category: any;
+        category: Category;
         localDate: Date;
     }
