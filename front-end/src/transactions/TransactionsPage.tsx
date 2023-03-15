@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import type Transaction from "../types/TransactionType";
+import type {Transaction} from "../types/TransactionType";
 
 export default function TransactionsPage() {
 
