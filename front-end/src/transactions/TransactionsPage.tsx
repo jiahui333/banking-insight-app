@@ -1,19 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useParams} from "react-router-dom";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
+import {Link} from "react-router-dom";
+import type {Transaction} from "../types/TransactionType";
 
 export default function TransactionsPage() {
-    type Transaction = {
-        id: number;
-        account: any;
-        receiver: string;
-        amount: number;
-        flowType: string;
-        category: any;
-        localDate: Date;
-    }
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
 
@@ -50,9 +40,10 @@ export default function TransactionsPage() {
         )
     })
 
-    const deleteTransaction = async (id: number) => {
-        await axios.delete(`http://localhost:8080/transactions/${id}`)
-        loadTransactions()
+    const deleteTransaction = (id: number) => {
+        axios.delete(`http://localhost:8080/transactions/${id}`)
+            .then(loadTransactions)
+            .catch(err => console.log(err))
     }
 
     return (

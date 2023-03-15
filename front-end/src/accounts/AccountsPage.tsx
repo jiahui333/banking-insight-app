@@ -1,14 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import type { Account } from "../types/AccountType";
 
 export default function AccountsPage() {
-    type Account = {
-        user: any;
-        iban: string;
-        balance: number;
-    }
-
-    // Question: even if I change the type of iban to number for example, the code still works, then what's the point of putting the type here?
 
     const [accounts, setAccounts] = useState<Account[]>([]);
 
