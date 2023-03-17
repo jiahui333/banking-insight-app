@@ -12,7 +12,7 @@ function App() {
             <Routes>
                 <Route path="/accounts" element={<AccountsPage/>} />
                 <Route path="/accounts/:id/transactions" element={<TransactionsPage/>} />
-                <Route path="/add-transaction" element={<AddTransactionPage/>} />
+                <Route path="/accounts/:id/transactions/add" element={<AddTransactionPage/>} />
             </Routes>
         </Router>
     </div>

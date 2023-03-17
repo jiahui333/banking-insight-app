@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import axios from "axios";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 
 export default function AddTransactionPage() {
 
     const navigate = useNavigate();
+
+    const { id } = useParams() as { id: string };
 
     const [transaction, setTransaction] = useState({
         flowType: "",
@@ -23,8 +25,8 @@ export default function AddTransactionPage() {
 
     const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await axios.post("http://localhost:8080/transactions", transaction)
-        navigate("/transactions")
+        await axios.post(`http://localhost:8080/accounts/${id}/transactions`, transaction)
+        navigate(`/accounts/${id}/transactions`)
     }
 
     return (
@@ -62,7 +64,7 @@ export default function AddTransactionPage() {
                 </label>
                 <br />
                 <input type="submit" value="Submit" />
-                <Link to={"/transactions"}>
+                <Link to={`/accounts/${id}/transactions`}>
                     <input type="button" value="Cancel" />
                 </Link>
             </form>

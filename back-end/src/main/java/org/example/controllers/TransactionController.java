@@ -27,8 +27,8 @@ public class TransactionController {
     CategoryService categoryService;
 
     @PostMapping
-    public void saveTransaction(@RequestBody Transaction transaction) {
-        Account currentAccount = accountService.findAccountById(1L).get();
+    public void saveTransaction(@PathVariable("account_id") Long account_id, @RequestBody Transaction transaction) {
+        Account currentAccount = accountService.findAccountById(account_id).get();
         Category selectedCategory = categoryService.findCategoryById(1L).get();
         transactionService.saveTransaction(transaction,currentAccount,selectedCategory);
         if ((transaction.getFlowType().equals("inflow"))) {

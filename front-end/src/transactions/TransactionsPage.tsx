@@ -6,7 +6,6 @@ import type {Transaction} from "../types/TransactionType";
 export default function TransactionsPage() {
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
-
     const { id } = useParams() as { id: string };
 
     useEffect(() => {
@@ -64,7 +63,7 @@ export default function TransactionsPage() {
                     {listTransactions}
                 </tbody>
             </table>
-            <Link to="/add-transaction">
+            <Link to={`/accounts/${id}/transactions/add`}>
                 <button>Add transaction</button>
             </Link>
         </div>
