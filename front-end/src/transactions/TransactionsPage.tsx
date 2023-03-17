@@ -35,15 +35,15 @@ export default function TransactionsPage() {
                 <td>{transaction.category.name}</td>
                 <td>{transaction.localDate.toLocaleString()}</td>
                 <td>
-                    <button onClick={()=>deleteTransaction(transaction.account.id, transaction.id)}>Delete</button>
+                    <button onClick={()=>deleteTransaction(transaction.id)}>Delete</button>
                 </td>
             </tr>
         )
     })
 
-    const deleteTransaction = (account_id: number, transaction_id: number) => {
-        axios.delete(`http://localhost:8080/accounts/${account_id}/transactions/${transaction_id}`)
-            .then(r => loadTransactions(account_id))
+    const deleteTransaction = (transaction_id: number) => {
+        axios.delete(`http://localhost:8080/accounts/${id}/transactions/${transaction_id}`)
+            .then(r => loadTransactions(+id))
     }
 
     return (
