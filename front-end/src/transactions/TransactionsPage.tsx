@@ -42,7 +42,7 @@ export default function TransactionsPage() {
     })
 
     const deleteTransaction = (account_id: number, transaction_id: number) => {
-        axios.delete(`http://localhost:8080/transactions/${transaction_id}`)
+        axios.delete(`http://localhost:8080/accounts/${account_id}/transactions/${transaction_id}`)
             .then(r => loadTransactions(account_id))
     }
 
