@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import type { Account } from "../types/AccountType";
+import {Link} from "react-router-dom";
 
 export default function AccountsPage() {
 
@@ -24,6 +25,11 @@ export default function AccountsPage() {
                 <td>{account.user.id}</td>
                 <td>{account.iban}</td>
                 <td>{account.balance}</td>
+                <td>
+                    <Link to={`/accounts/${account.id}/transactions`}>
+                        <button>Transactions</button>
+                    </Link>
+                </td>
             </tr>
         )
     })

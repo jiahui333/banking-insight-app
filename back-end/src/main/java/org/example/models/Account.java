@@ -23,6 +23,10 @@ public class Account {
     @Column(nullable = false)
     private BigDecimal balance = BigDecimal.ZERO;
 
+    public Long getId() {
+        return id;
+    }
+
     public User getUser() {
         return user;
     }

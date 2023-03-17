@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import type {Transaction} from "../types/TransactionType";
 
 export default function TransactionsPage() {
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-    useEffect(() => {
-        loadTransactions()},[]);
+    const { id } = useParams() as { id: string };
 
-    const loadTransactions = () => {
-        axios.get(`http://localhost:8080/transactions`)
+    useEffect(() => {
+        loadTransactions(+id)},[]);
+
+    const loadTransactions = (account_id: number) => {
+        axios.get(`http://localhost:8080/accounts/${account_id}/transactions`)
             .then(res =>{
                 setTransactions(res.data)
                 console.log(res.data)
@@ -34,16 +36,15 @@ export default function TransactionsPage() {
                 <td>{transaction.category.name}</td>
                 <td>{transaction.localDate.toLocaleString()}</td>
                 <td>
-                    <button onClick={()=>deleteTransaction(transaction.id)}>Delete</button>
+                    <button onClick={()=>deleteTransaction(transaction.account.id, transaction.id)}>Delete</button>
                 </td>
             </tr>
         )
     })
 
-    const deleteTransaction = (id: number) => {
-        axios.delete(`http://localhost:8080/transactions/${id}`)
-            .then(loadTransactions)
-            .catch(err => console.log(err))
+    const deleteTransaction = (account_id: number, transaction_id: number) => {
+        axios.delete(`http://localhost:8080/transactions/${transaction_id}`)
+            .then(r => loadTransactions(account_id))
     }
 
     return (

@@ -14,8 +14,8 @@ import java.util.Objects;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
-@RequestMapping("/transactions")
-public class TransactionCotroller {
+@RequestMapping("/accounts/{account_id}/transactions")
+public class TransactionController {
 
     @Autowired
     TransactionService transactionService;
@@ -43,8 +43,8 @@ public class TransactionCotroller {
     }
 
     @GetMapping
-    public List<Transaction> findAllTransactionsByAccount() {
-        Account currentAccount = accountService.findAccountById(1L).get();
+    public List<Transaction> findAllTransactionsByAccount(@PathVariable("account_id") Long account_id) {
+        Account currentAccount = accountService.findAccountById(account_id).get();
         return transactionService.findAllTransactionsByAccount(currentAccount);
     }
 
