@@ -7,9 +7,11 @@ export default function TransactionsPage() {
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const { id } = useParams() as { id: string };
+    const account_id: number = +id
 
     useEffect(() => {
-        loadTransactions(+id)},[]);
+        loadTransactions(account_id)},[account_id]);
+    //React Hook useEffect has a missing dependency: 'account_id'. Either include it or remove the dependency array
 
     const loadTransactions = (account_id: number) => {
         axios.get(`http://localhost:8080/accounts/${account_id}/transactions`)
@@ -42,8 +44,8 @@ export default function TransactionsPage() {
     })
 
     const deleteTransaction = (transaction_id: number) => {
-        axios.delete(`http://localhost:8080/accounts/${id}/transactions/${transaction_id}`)
-            .then(r => loadTransactions(+id))
+        axios.delete(`http://localhost:8080/accounts/${account_id}/transactions/${transaction_id}`)
+            .then(r => loadTransactions(account_id))
     }
 
     return (
@@ -63,7 +65,7 @@ export default function TransactionsPage() {
                     {listTransactions}
                 </tbody>
             </table>
-            <Link to={`/accounts/${id}/transactions/add`}>
+            <Link to={`/accounts/${account_id}/transactions/add`}>
                 <button>Add transaction</button>
             </Link>
         </div>

@@ -3,6 +3,7 @@ package org.example.controllers;
 import org.example.models.Account;
 import org.example.models.Category;
 import org.example.models.Transaction;
+import org.example.repositories.TransactionRepo;
 import org.example.services.AccountService;
 import org.example.services.CategoryService;
 import org.example.services.TransactionService;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -31,9 +31,7 @@ public class TransactionController {
         Account currentAccount = accountService.findAccountById(account_id).get();
         Category selectedCategory = categoryService.findCategoryById(1L).get();
         transactionService.saveTransaction(transaction,currentAccount,selectedCategory);
-        if ((transaction.getFlowType().equals("inflow"))) {
-            accountService.updateAccountBalance(transaction);
-        }
+        accountService.updateBalanceWhenAdd(currentAccount, transaction);
     }
 
     @GetMapping("/{transaction_id}")
@@ -49,8 +47,11 @@ public class TransactionController {
     }
 
     @DeleteMapping("/{transaction_id}")
-    public void deleteTransaction(@PathVariable("transaction_id") Long transaction_id) {
+    public void deleteTransaction(@PathVariable("account_id") Long account_id, @PathVariable("transaction_id") Long transaction_id) {
+        Account currentAccount = accountService.findAccountById(account_id).get();
+        Transaction currentTransaction = transactionService.findTransactionById(transaction_id).get();
         transactionService.deleteTransactionById(transaction_id);
+        accountService.updateBalanceWhenDelete(currentAccount, currentTransaction);
     }
 
 }

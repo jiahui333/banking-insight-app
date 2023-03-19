@@ -13,9 +13,11 @@ public interface AccountService {
 
     void saveAccount(Account account, User user);
 
-    void updateAccountBalance(Transaction transaction);
-
     void deleteAccountById(Long id);
     List<Account> findAccountsByUser(User user);
+
+    void updateBalanceWhenAdd(Account account, Transaction transaction);
+
+    void updateBalanceWhenDelete(Account account, Transaction transaction);
 
 }
