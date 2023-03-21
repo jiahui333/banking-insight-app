@@ -14,7 +14,7 @@ export default function AddTransactionPage() {
         receiver: "",
         amount:""
         })
-    const [check, setCheck] = useState(false);
+
     const [flowType, setFlowType] = useState("outflow");
 
     //destructure
@@ -31,9 +31,6 @@ export default function AddTransactionPage() {
     }
 
 // functions below can be factored into a check component
-    function handleCheckbox() {
-        setCheck(!check);
-    }
     function checkOutflow() {
         transaction.flowType = "outflow";
         setFlowType("outflow");
@@ -52,16 +49,16 @@ export default function AddTransactionPage() {
                     Outflow:
                     <input
                         type="checkbox"
-                        checked={flowType == "outflow"}
-                        onChange={()=>{ checkOutflow(); handleCheckbox() }}
+                        checked={flowType === "outflow"}
+                        onChange={checkOutflow}
                     />
                 </label>
                 <label>
                     Inflow:
                     <input
                         type="checkbox"
-                        checked={flowType == "inflow"}
-                        onChange={()=>{ checkInflow(); handleCheckbox() }}
+                        checked={flowType === "inflow"}
+                        onChange={checkInflow}
                     />
                 </label>
                 <br />
