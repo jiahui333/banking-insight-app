@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-
-
 export default function AddTransactionPage() {
 
     const navigate = useNavigate();
@@ -16,18 +14,34 @@ export default function AddTransactionPage() {
         receiver: "",
         amount:""
         })
+    const [check, setCheck] = useState(false);
+    const [flowType, setFlowType] = useState("outflow");
 
     //destructure
     // const {flowType, sender, receiver, amount} = transaction;
 
     //spread operator
-    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    function onInputChange (e: React.ChangeEvent<HTMLInputElement>) {
         setTransaction({...transaction,[e.target.name]:e.target.value})
     }
-    const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    async function onSubmitForm (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         await axios.post(`http://localhost:8080/accounts/${account_id}/transactions`, transaction)
         navigate(`/accounts/${account_id}/transactions`)
+    }
+
+// functions below can be factored into a check component
+    function handleCheckbox() {
+        setCheck(!check);
+    }
+    function checkOutflow() {
+        transaction.flowType = "outflow";
+        setFlowType("outflow");
+    }
+
+    function checkInflow() {
+        transaction.flowType = "inflow";
+        setFlowType("inflow");
     }
 
     return (
@@ -35,12 +49,19 @@ export default function AddTransactionPage() {
             <h1>New Transaction</h1>
             <form onSubmit={(e => onSubmitForm(e))}>
                 <label>
-                    Flow type:
+                    Outflow:
                     <input
-                        type="text"
-                        name="flowType"
-                        value={transaction.flowType}
-                        onChange={(e => onInputChange(e))}
+                        type="checkbox"
+                        checked={flowType == "outflow"}
+                        onChange={()=>{ checkOutflow(); handleCheckbox() }}
+                    />
+                </label>
+                <label>
+                    Inflow:
+                    <input
+                        type="checkbox"
+                        checked={flowType == "inflow"}
+                        onChange={()=>{ checkInflow(); handleCheckbox() }}
                     />
                 </label>
                 <br />
