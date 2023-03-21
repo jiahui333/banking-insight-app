@@ -25,17 +25,16 @@ export default function TransactionsPage() {
     const listTransactions = transactions.map((transaction) => {
         console.log(transaction);
         console.log(typeof transaction.localDate)
-        // if the type of transaction.localDate is string, why do I have to add toLocaleString to make it display?
-        console.log(transaction.id)
         return (
             <tr>
                 <td>{transaction.id}</td>
                 <td>{transaction.account.iban}</td>
+                <td>{transaction.sender}</td>
                 <td>{transaction.receiver}</td>
                 <td>{transaction.amount}</td>
                 <td>{transaction.flowType}</td>
                 <td>{transaction.category.name}</td>
-                <td>{transaction.localDate.toLocaleString()}</td>
+                <td>{transaction.localDate}</td>
                 <td>
                     <button onClick={()=>deleteTransaction(transaction.id)}>Delete</button>
                 </td>
@@ -56,6 +55,7 @@ export default function TransactionsPage() {
                     <tr>
                         <th>#</th>
                         <th>Account</th>
+                        <th>Sender</th>
                         <th>Receiver</th>
                         <th>Amount</th>
                         <th>Flow type</th>
@@ -67,6 +67,10 @@ export default function TransactionsPage() {
             </table>
             <Link to={`/accounts/${account_id}/transactions/add`}>
                 <button>Add transaction</button>
+            </Link>
+            <br/>
+            <Link to={"/accounts"}>
+                <button>Return to accounts</button>
             </Link>
         </div>
     )

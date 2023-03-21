@@ -23,6 +23,9 @@ public class Transaction {
     @Column
     private String receiver;
 
+    @Column
+    private String sender;
+
     @Column(nullable = false)
     private BigDecimal amount;
 
@@ -45,6 +48,10 @@ public class Transaction {
 
     public String getFlowType() {
         return flowType;
+    }
+
+    public String getSender() {
+        return sender;
     }
 
     public String getReceiver() {

@@ -12,18 +12,18 @@ export default function AddTransactionPage() {
 
     const [transaction, setTransaction] = useState({
         flowType: "",
+        sender:"",
         receiver: "",
         amount:""
         })
 
     //destructure
-    const {flowType, receiver, amount} = transaction;
+    // const {flowType, sender, receiver, amount} = transaction;
 
     //spread operator
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTransaction({...transaction,[e.target.name]:e.target.value})
     }
-
     const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         await axios.post(`http://localhost:8080/accounts/${account_id}/transactions`, transaction)
@@ -39,7 +39,17 @@ export default function AddTransactionPage() {
                     <input
                         type="text"
                         name="flowType"
-                        value={flowType}
+                        value={transaction.flowType}
+                        onChange={(e => onInputChange(e))}
+                    />
+                </label>
+                <br />
+                <label>
+                    Sender:
+                    <input
+                        type="text"
+                        name="sender"
+                        value={transaction.sender}
                         onChange={(e => onInputChange(e))}
                     />
                 </label>
@@ -49,7 +59,7 @@ export default function AddTransactionPage() {
                     <input
                         type="text"
                         name="receiver"
-                        value={receiver}
+                        value={transaction.receiver}
                         onChange={(e => onInputChange(e))}
                     />
                 </label>
@@ -59,7 +69,7 @@ export default function AddTransactionPage() {
                     <input
                         type="text"
                         name="amount"
-                        value={amount}
+                        value={transaction.amount}
                         onChange={(e => onInputChange(e))}
                     />
                 </label>
