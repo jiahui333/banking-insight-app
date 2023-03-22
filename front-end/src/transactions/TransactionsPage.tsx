@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import type {Transaction} from "../types/TransactionType";
 
 export default function TransactionsPage() {
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
+    console.log(useParams());
+    console.log(useLocation().state);
+    const { iban }= useLocation().state as {iban: string};
     const { id } = useParams() as { id: string };
     const account_id: number = +id
 
@@ -65,7 +68,11 @@ export default function TransactionsPage() {
                     {listTransactions}
                 </tbody>
             </table>
-            <Link to={`/accounts/${account_id}/transactions/add`}>
+            <Link to={`/accounts/${account_id}/transactions/add`}
+            state={{
+                iban: iban
+            }}>
+
                 <button>Add transaction</button>
             </Link>
             <br/>

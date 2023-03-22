@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import axios from "axios";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 export default function AddTransactionPage() {
 
     const navigate = useNavigate();
 
     const { id } = useParams() as { id: string };
     const account_id: number = +id
+
+    console.log(useLocation().state);
+    const { iban } = useLocation().state as {iban: string};
 
     const [transaction, setTransaction] = useState({
         flowType: "",
@@ -22,6 +25,7 @@ export default function AddTransactionPage() {
 
     //spread operator
     function onInputChange (e: React.ChangeEvent<HTMLInputElement>) {
+        console.log(transaction.sender);
         setTransaction({...transaction,[e.target.name]:e.target.value})
     }
     async function onSubmitForm (e: React.FormEvent<HTMLFormElement>) {
@@ -34,11 +38,17 @@ export default function AddTransactionPage() {
     function checkOutflow() {
         transaction.flowType = "outflow";
         setFlowType("outflow");
+        //TODO: the sender field should turn into a normal field instead of an input field, otherwise users can still change it
+        transaction.sender = iban;
+        transaction.receiver = "";
     }
 
     function checkInflow() {
         transaction.flowType = "inflow";
         setFlowType("inflow");
+        //TODO: the sender field should turn into a normal field instead of an input field, otherwise users can still change it
+        transaction.receiver = iban;
+        transaction.sender = "";
     }
 
     return (
@@ -67,8 +77,8 @@ export default function AddTransactionPage() {
                     <input
                         type="text"
                         name="sender"
-                        value={transaction.sender}
                         onChange={(e => onInputChange(e))}
+                        value={transaction.sender}
                     />
                 </label>
                 <br />
@@ -77,8 +87,8 @@ export default function AddTransactionPage() {
                     <input
                         type="text"
                         name="receiver"
-                        value={transaction.receiver}
                         onChange={(e => onInputChange(e))}
+                        value={transaction.receiver}
                     />
                 </label>
                 <br />

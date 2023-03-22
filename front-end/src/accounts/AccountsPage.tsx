@@ -26,7 +26,10 @@ export default function AccountsPage() {
                 <td>{account.iban}</td>
                 <td>{account.balance}</td>
                 <td>
-                    <Link to={`/accounts/${account.id}/transactions`}>
+                    <Link to={`/accounts/${account.id}/transactions`}
+                    state={{
+                        iban: account.iban
+                    }}>
                         <button>Transactions</button>
                     </Link>
                 </td>
