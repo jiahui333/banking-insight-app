@@ -8,12 +8,12 @@ export default function AddTransactionPage() {
     const { id } = useParams() as { id: string };
     const account_id: number = +id
 
-    console.log(useLocation().state);
+    console.log("useLocation().state: " + useLocation().state.iban);
     const { iban } = useLocation().state as {iban: string};
 
     const [transaction, setTransaction] = useState({
-        flowType: "",
-        sender:"",
+        flowType: "outflow",
+        sender:iban,
         receiver: "",
         amount:""
         })
@@ -31,7 +31,7 @@ export default function AddTransactionPage() {
     async function onSubmitForm (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         await axios.post(`http://localhost:8080/accounts/${account_id}/transactions`, transaction)
-        navigate(`/accounts/${account_id}/transactions`)
+        navigate(`/accounts/${account_id}/transactions`,{ state: { iban: iban } })
     }
 
 // functions below can be factored into a check component
@@ -79,6 +79,7 @@ export default function AddTransactionPage() {
                         name="sender"
                         onChange={(e => onInputChange(e))}
                         value={transaction.sender}
+                        disabled = {transaction.flowType === "outflow"}
                     />
                 </label>
                 <br />
@@ -89,6 +90,7 @@ export default function AddTransactionPage() {
                         name="receiver"
                         onChange={(e => onInputChange(e))}
                         value={transaction.receiver}
+                        disabled = {transaction.flowType === "inflow"}
                     />
                 </label>
                 <br />
@@ -103,7 +105,8 @@ export default function AddTransactionPage() {
                 </label>
                 <br />
                 <input type="submit" value="Submit" />
-                <Link to={`/accounts/${account_id}/transactions`}>
+                <Link to={`/accounts/${account_id}/transactions`}
+                      state={{iban: iban}}>
                     <input type="button" value="Cancel" />
                 </Link>
             </form>

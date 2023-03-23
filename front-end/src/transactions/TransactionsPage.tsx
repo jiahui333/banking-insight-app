@@ -7,7 +7,7 @@ export default function TransactionsPage() {
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     console.log(useParams());
-    console.log(useLocation().state);
+    console.log("useLocation().state: "+useLocation().state.iban);
     const { iban }= useLocation().state as {iban: string};
     const { id } = useParams() as { id: string };
     const account_id: number = +id
