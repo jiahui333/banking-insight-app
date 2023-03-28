@@ -24,11 +24,12 @@ public class UserServiceImpl implements UserService {
         userRepo.save(user);
     }
 
-//    @Override
-//    public User logIn(String username, String password) throws NoSuchElementException {
-//        return userRepo.findUserByLogIn(username, password);
-//    }
-//
+    @Override
+    public User findByUsername(String userName) {
+        return userRepo.findByUsername(userName);
+    }
+
+
 //    @Override
 //    public void changeUsername(String oldUsername, String password, String newUsername) throws NoSuchElementException {
 //        User user = userRepo.getUser(oldUsername, password);
