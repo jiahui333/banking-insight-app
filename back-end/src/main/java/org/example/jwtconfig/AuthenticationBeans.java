@@ -23,15 +23,11 @@ public class AuthenticationBeans{
     @Autowired
     UserRepo userRepo;
 
-    public AuthenticationBeans(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
 
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> userRepo.findByUsername(username);
     }
-
 
     @Bean
     public AuthenticationProvider authenticationProvider() {

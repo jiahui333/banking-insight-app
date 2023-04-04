@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import type { Account } from "../types/AccountType";
+import type { Account } from "../../types/AccountType";
 import {Link} from "react-router-dom";
 
 export default function AccountsPage() {
