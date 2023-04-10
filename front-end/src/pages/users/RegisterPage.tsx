@@ -10,7 +10,7 @@ export default function RegisterPage() {
     const [firstName, setFirstName] = useState("");
     const [secondName, setSecondName] = useState("");
 
-    async function sendRegisterRequest(e: React.MouseEvent<HTMLInputElement>) {
+    function sendRegisterRequest(e: React.MouseEvent<HTMLInputElement>) {
         const requestBody = {
             "firstName": firstName,
             "secondName": secondName,
@@ -18,7 +18,11 @@ export default function RegisterPage() {
             "password": password
         }
         e.preventDefault();
-        await axios.post("http://localhost:8080/user/register", requestBody)
+        axios.post("http://localhost:8080/user/register", requestBody)
+            .then(res => {
+                setJwt(JSON.stringify(res.data.jwtToken))
+            })
+        localStorage.setItem("jwt", jwt);
     }
 
     return (

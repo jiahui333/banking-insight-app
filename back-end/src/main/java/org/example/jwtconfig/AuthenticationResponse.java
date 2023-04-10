@@ -1,8 +1,5 @@
 package org.example.jwtconfig;
 
-import lombok.Builder;
-
-
 public class AuthenticationResponse {
     private final String jwtToken;
 

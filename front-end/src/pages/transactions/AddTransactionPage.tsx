@@ -38,7 +38,6 @@ export default function AddTransactionPage() {
     function checkOutflow() {
         transaction.flowType = "outflow";
         setFlowType("outflow");
-        //TODO: the sender field should turn into a normal field instead of an input field, otherwise users can still change it
         transaction.sender = iban;
         transaction.receiver = "";
     }
@@ -46,7 +45,6 @@ export default function AddTransactionPage() {
     function checkInflow() {
         transaction.flowType = "inflow";
         setFlowType("inflow");
-        //TODO: the sender field should turn into a normal field instead of an input field, otherwise users can still change it
         transaction.receiver = iban;
         transaction.sender = "";
     }
