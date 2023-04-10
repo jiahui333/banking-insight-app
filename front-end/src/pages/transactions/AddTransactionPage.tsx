@@ -1,9 +1,13 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
+import {CategoryDropDown} from "../../components/CategoryDropDown";
+
 export default function AddTransactionPage() {
 
     const navigate = useNavigate();
+
+
 
     const { id } = useParams() as { id: string };
     const account_id: number = +id
@@ -19,6 +23,7 @@ export default function AddTransactionPage() {
         })
 
     const [flowType, setFlowType] = useState("outflow");
+
 
     //destructure
     // const {flowType, sender, receiver, amount} = transaction;
@@ -48,6 +53,7 @@ export default function AddTransactionPage() {
         transaction.receiver = iban;
         transaction.sender = "";
     }
+
 
     return (
         <div>
@@ -100,6 +106,11 @@ export default function AddTransactionPage() {
                         value={transaction.amount}
                         onChange={(e => onInputChange(e))}
                     />
+                </label>
+                <br />
+                <label>
+                    Category:
+                    <CategoryDropDown />
                 </label>
                 <br />
                 <input type="submit" value="Submit" />
