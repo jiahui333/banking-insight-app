@@ -17,8 +17,7 @@ public class TransactionServiceImpl implements TransactionService{
     private TransactionRepo transactionRepo;
 
     @Override
-    public void saveTransaction(Transaction transaction, Account account, Category category) {
-        transaction.setCategory(category);
+    public void saveTransaction(Transaction transaction, Account account) {
         transaction.setAccount(account);
         transactionRepo.save(transaction);
     }

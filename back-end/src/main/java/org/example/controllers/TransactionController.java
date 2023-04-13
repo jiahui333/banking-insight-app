@@ -29,8 +29,7 @@ public class TransactionController {
     @PostMapping
     public void saveTransaction(@PathVariable("account_id") Long account_id, @RequestBody Transaction transaction) {
         Account currentAccount = accountService.findAccountById(account_id).get();
-        Category selectedCategory = categoryService.findCategoryById(1L).get();
-        transactionService.saveTransaction(transaction,currentAccount,selectedCategory);
+        transactionService.saveTransaction(transaction,currentAccount);
         accountService.updateBalanceWhenAdd(currentAccount, transaction);
     }
 

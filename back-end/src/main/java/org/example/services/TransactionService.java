@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TransactionService {
-    void saveTransaction(Transaction transaction, Account account, Category category);
+    void saveTransaction(Transaction transaction, Account account);
     Optional<Transaction> findTransactionById(Long id);
 
     List<Transaction> findAllTransactionsByAccount(Account account);

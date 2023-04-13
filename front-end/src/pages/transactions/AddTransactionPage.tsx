@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import {CategoryDropDown} from "../../components/CategoryDropDown";
+import {Category} from "../../types/CategoryType";
+import {Transaction} from "../../types/TransactionType";
 
 export default function AddTransactionPage() {
 
@@ -19,7 +21,8 @@ export default function AddTransactionPage() {
         flowType: "outflow",
         sender:iban,
         receiver: "",
-        amount:""
+        amount:"",
+        category: {} as Category
         })
 
     const [flowType, setFlowType] = useState("outflow");
@@ -52,6 +55,12 @@ export default function AddTransactionPage() {
         setFlowType("inflow");
         transaction.receiver = iban;
         transaction.sender = "";
+    }
+
+    function handleDataFromCategoryDropDownComponent(category: Category) {
+        console.log(`This is the category received from the component- ${category.id}`);
+        transaction.category = category;
+        console.log(transaction.category);
     }
 
 
@@ -108,10 +117,7 @@ export default function AddTransactionPage() {
                     />
                 </label>
                 <br />
-                <label>
-                    Category:
-                    <CategoryDropDown />
-                </label>
+                <CategoryDropDown sendCategoryToTransaction = {handleDataFromCategoryDropDownComponent}/>
                 <br />
                 <input type="submit" value="Submit" />
                 <Link to={`/accounts/${account_id}/transactions`}
