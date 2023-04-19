@@ -2,14 +2,17 @@ package org.example.controllers;
 
 import org.example.models.Account;
 import org.example.models.Category;
+import org.example.models.Footprint;
 import org.example.models.Transaction;
 import org.example.repositories.TransactionRepo;
 import org.example.services.AccountService;
 import org.example.services.CategoryService;
+import org.example.services.FootprintService;
 import org.example.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -26,10 +29,14 @@ public class TransactionController {
     @Autowired
     CategoryService categoryService;
 
+    @Autowired
+    FootprintService footprintService;
+
     @PostMapping
     public void saveTransaction(@PathVariable("account_id") Long account_id, @RequestBody Transaction transaction) {
         Account currentAccount = accountService.findAccountById(account_id).get();
-        transactionService.saveTransaction(transaction,currentAccount);
+        BigDecimal currentFootprint = footprintService.saveAndReturnFootprintPerTrans(transaction);
+        transactionService.saveTransaction(transaction, currentAccount,currentFootprint);
         accountService.updateBalanceWhenAdd(currentAccount, transaction);
     }
 

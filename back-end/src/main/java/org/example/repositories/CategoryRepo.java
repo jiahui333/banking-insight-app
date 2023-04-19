@@ -10,4 +10,5 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface CategoryRepo extends JpaRepository<Category, Long> {
+    Category findCategoryByName(String name);
 }

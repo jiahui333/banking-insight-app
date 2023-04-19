@@ -29,7 +29,12 @@ public class CategoryServiceImpl implements CategoryService{
         return categoryRepo.findAll();
     }
 
-    //not finished
+    @Override
+    public Category findCategoryByName(String name) {
+        return categoryRepo.findCategoryByName(name);
+    }
+
+    //not used
     @Override
     public Category updateCategoryName(Long id) {
         return null;

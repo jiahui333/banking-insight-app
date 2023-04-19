@@ -38,6 +38,7 @@ export default function TransactionsPage() {
                 <td>{transaction.flowType}</td>
                 <td>{transaction.category.name}</td>
                 <td>{transaction.localDate}</td>
+                <td>{transaction.footprint}</td>
                 <td>
                     <button onClick={()=>deleteTransaction(transaction.id)}>Delete</button>
                 </td>
@@ -64,6 +65,7 @@ export default function TransactionsPage() {
                         <th>Flow type</th>
                         <th>Category</th>
                         <th>Date</th>
+                        <th>Footprint</th>
                     </tr>
                     {listTransactions}
                 </tbody>

@@ -6,6 +6,7 @@ import RegisterPage from "./pages/users/RegisterPage";
 import TransactionsPage from "./pages/transactions/TransactionsPage";
 import AddTransactionPage from "./pages/transactions/AddTransactionPage";
 import LogInPage from "./pages/users/LogInPage";
+import FootprintPage from "./pages/footprint/FootprintPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/accounts" element={<AccountsPage/>} />
                 <Route path="/accounts/:id/transactions" element={<TransactionsPage/>} />
                 <Route path="/accounts/:id/transactions/add" element={<AddTransactionPage/>} />
+                <Route path="/footprint" element={<FootprintPage/>} />
             </Routes>
         </Router>
     </div>

@@ -5,7 +5,6 @@ import {TransactionProps} from "../types/TransactionPropsType";
 
 export function CategoryDropDown(props: TransactionProps): JSX.Element {
     const [categories, setCategories] = useState<Category[]>([]);
-    const [selectedCategoryId, setSelectedCategoryId] = useState<number>();
 
     async function fetchCategories () {
         try {

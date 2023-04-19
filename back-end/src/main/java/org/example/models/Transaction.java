@@ -36,6 +36,9 @@ public class Transaction {
     private Category category;
 
     @Column
+    private BigDecimal footprint;
+
+    @Column
     private LocalDate localDate = LocalDate.now();
 
     public Long getId() {
@@ -68,6 +71,14 @@ public class Transaction {
 
     public LocalDate getLocalDate() {
         return localDate;
+    }
+
+    public BigDecimal getFootprint() {
+        return footprint;
+    }
+
+    public void setFootprint(BigDecimal footprint) {
+        this.footprint = footprint;
     }
 
     public void setAccount(Account account) {

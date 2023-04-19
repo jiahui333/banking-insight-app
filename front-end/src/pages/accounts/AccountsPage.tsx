@@ -33,6 +33,14 @@ export default function AccountsPage() {
                         <button>Transactions</button>
                     </Link>
                 </td>
+                <td>
+                    <Link to={`/accounts/${account.id}/footprint`}
+                          state={{
+                              iban: account.iban
+                          }}>
+                        <button>Footprint</button>
+                    </Link>
+                </td>
             </tr>
         )
     })
