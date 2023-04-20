@@ -39,10 +39,21 @@ public class FootprintServiceImpl implements FootprintService {
     }
 
     @Override
-    public BigDecimal calculateFootprintPerCategory(Category category) {
-        List<Footprint> footprints = footprintRepo.findAllByCategory(category);
-        return footprints.stream()
-                .map(Footprint::getAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    public Map<String, BigDecimal> calculateCategoryFootprintMap() {
+        List<Footprint> footprintList = footprintRepo.findAll();
+        Map<String, BigDecimal> categoryAmountMap = new HashMap<>();
+
+        for (Footprint footprint : footprintList) {
+            String categoryName = footprint.getCategory().getName();
+            BigDecimal amount = footprint.getAmount();
+
+            if (categoryAmountMap.containsKey(categoryName)) {
+                categoryAmountMap.put(categoryName, categoryAmountMap.get(categoryName).add(amount));
+            } else {
+                categoryAmountMap.put(categoryName, amount);
+            }
+        }
+
+        return categoryAmountMap;
     }
 }

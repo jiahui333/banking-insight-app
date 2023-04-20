@@ -5,9 +5,11 @@ import org.example.models.Footprint;
 import org.example.models.Transaction;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public interface FootprintService {
     BigDecimal saveAndReturnFootprintPerTrans(Transaction transaction);
-    BigDecimal calculateFootprintPerCategory(Category category);
+    Map<String, BigDecimal> calculateCategoryFootprintMap();
 }
