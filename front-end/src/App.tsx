@@ -7,10 +7,13 @@ import TransactionsPage from "./pages/transactions/TransactionsPage";
 import AddTransactionPage from "./pages/transactions/AddTransactionPage";
 import LogInPage from "./pages/users/LogInPage";
 import FootprintPage from "./pages/footprint/FootprintPage";
+import {Navbar} from "./components/Navbar";
 
 function App() {
   return (
+
     <div className="App">
+        {/*<Navbar/>*/}
         <Router>
             <Routes>
                 <Route path="/user/register" element={<RegisterPage/>} />

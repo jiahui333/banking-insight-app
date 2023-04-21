@@ -21,6 +21,7 @@ export function FootprintPerCatTable() {
 
     return (
 
+
         <table>
             {Object.entries(categoryFootprintPairs).map(([categoryName, amount]) =>
                 <tr>
