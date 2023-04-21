@@ -2,5 +2,5 @@
 /front-end/node_modules/
 /front-end/build/
 /back-end/src/main/resources/
-/.idea
+/back-end/.idea/
 .DS_Store
