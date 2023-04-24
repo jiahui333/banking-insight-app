@@ -4,7 +4,9 @@ import org.example.models.User;
 import org.example.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +49,10 @@ public class AuthenticationService {
             System.out.println("Somethings goes wrong:"+e);
         }
         User authenticatedUser = userRepo.findByUsername(request.getUsername());
+        boolean isPasswordValid = request.getPassword().equals(authenticatedUser.getPassword());
+        if (!isPasswordValid) {
+            throw new BadCredentialsException("Invalid username or password");
+        }
         String jwtTokenAuthenticate = jwtService.generateToken(authenticatedUser);
         return new AuthenticationResponse(jwtTokenAuthenticate);
     }

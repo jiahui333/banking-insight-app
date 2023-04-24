@@ -8,7 +8,9 @@ export default function AccountsPage() {
     const [accounts, setAccounts] = useState<Account[]>([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/accounts')
+        const account_jwt = localStorage.getItem("jwt");
+        console.log("account page jwt: " + account_jwt + new Date().getTime())
+        axios.get('http://localhost:8080/accounts', { headers: { Authorization: `Bearer ${account_jwt}`}})
             .then(res =>{
                 setAccounts(res.data)
                 console.log(res.data)
@@ -33,20 +35,12 @@ export default function AccountsPage() {
                         <button>Transactions</button>
                     </Link>
                 </td>
-                <td>
-                    <Link to={`/accounts/${account.id}/footprint`}
-                          state={{
-                              iban: account.iban
-                          }}>
-                        <button>Footprint</button>
-                    </Link>
-                </td>
             </tr>
         )
     })
 
     return (
-        <div>
+        <div className="pt-20">
             <h1>Accounts</h1>
             <table>
                 <tr>

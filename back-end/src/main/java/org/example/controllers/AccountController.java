@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +38,9 @@ public class AccountController {
     }
 
     @GetMapping
-    public List<Account> findAllAccountsByUser() {
-        User currentUser = userService.findUserById(1L).get();
+    public List<Account> findAllAccountsByUser(Principal principal) {
+        System.out.println(principal);
+        User currentUser = userService.findByUsername(principal.getName());
         return accountService.findAccountsByUser(currentUser);
     }
 

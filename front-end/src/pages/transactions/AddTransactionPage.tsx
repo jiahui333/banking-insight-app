@@ -39,7 +39,8 @@ export default function AddTransactionPage() {
     async function onSubmitForm (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         console.log(transaction);
-        await axios.post(`http://localhost:8080/accounts/${account_id}/transactions`, transaction)
+        await axios.post(`http://localhost:8080/accounts/${account_id}/transactions`, transaction, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
+        console.log("add trans jwt: " + localStorage.getItem("jwt"))
         navigate(`/accounts/${account_id}/transactions`,{ state: { iban: iban } })
     }
 

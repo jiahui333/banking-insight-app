@@ -2,12 +2,12 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import loginBackground from "../../assets/loginBackground.svg"
-import {Navbar} from "../../components/Navbar";
 
 export default function LogInPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [jwt, setJwt] = useState("");
+    const [error, setError] = useState(null)
 
     const navigate = useNavigate();
 
@@ -19,12 +19,26 @@ export default function LogInPage() {
         e.preventDefault();
        axios.post("http://localhost:8080/user/authenticate", requestBody)
             .then(res => {
-                setJwt(JSON.stringify(res.data.jwtToken))
+                const jwt = res.data.jwtToken
+                setJwt(jwt)
+                localStorage.setItem("jwt", jwt);
+                // console.log("login page jwt: " + jwt + new Date().getTime())
+                navigate("/accounts")
             })
-       if (!jwt) {
-           localStorage.setItem("jwt", jwt);
+           .catch(err => {
+                setError(err)
+            })
+
+    }
+
+    function getErrorView() {
+       if (error) {
+           return (
+               <div>
+                   <p>Ops, wrong credentials. Please try again.</p>
+               </div>
+           )
        }
-       navigate("/accounts")
     }
 
     return (
@@ -54,7 +68,9 @@ export default function LogInPage() {
                 <div>
                     <input type="submit" value="Submit" onClick={e => sendLogInRequest(e)}/>
                 </div>
+                {getErrorView()}
             </form>
+
         </div>
     )
 

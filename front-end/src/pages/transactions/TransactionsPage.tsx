@@ -14,10 +14,9 @@ export default function TransactionsPage() {
 
     useEffect(() => {
         loadTransactions(account_id)},[account_id]);
-    //React Hook useEffect has a missing dependency: 'account_id'. Either include it or remove the dependency array
 
     const loadTransactions = (account_id: number) => {
-        axios.get(`http://localhost:8080/accounts/${account_id}/transactions`)
+        axios.get(`http://localhost:8080/accounts/${account_id}/transactions`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
             .then(res =>{
                 setTransactions(res.data)
                 console.log(res.data)
@@ -47,7 +46,7 @@ export default function TransactionsPage() {
     })
 
     const deleteTransaction = (transaction_id: number) => {
-        axios.delete(`http://localhost:8080/accounts/${account_id}/transactions/${transaction_id}`)
+        axios.delete(`http://localhost:8080/accounts/${account_id}/transactions/${transaction_id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
             .then(r => loadTransactions(account_id))
     }
 
