@@ -30,15 +30,20 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category findCategoryByName(String name) {
-        return categoryRepo.findCategoryByName(name);
+    public List<Category> findCategoriesByFlowType(String flowType) {
+        return categoryRepo.findAllByFlowType(flowType);
     }
 
+//    @Override
+//    public Category findCategoryByName(String name) {
+//        return categoryRepo.findCategoryByName(name);
+//    }
+
     //not used
-    @Override
-    public Category updateCategoryName(Long id) {
-        return null;
-    }
+//    @Override
+//    public Category updateCategoryName(Long id) {
+//        return null;
+//    }
 
 //    @Override
 //    public Category updateCategoryName(Long id) {

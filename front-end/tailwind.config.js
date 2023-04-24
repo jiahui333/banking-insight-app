@@ -6,10 +6,20 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'logoFont': ['Inconsolata', 'monospace'],
+        'logoFont': ['Corben', 'serif'],
         'bodyFont': ['Montserrat', 'sans-serif']
+      },
+      colors: {
+        //baseColor: #15803D
+        'logoColor': '#15803D',
+        // 60% base
+        'h1Color': '#083318',
+        // 80% base
+        'bodyColor': '#041a0c',
       },
     },
   },
-  plugins: [],
+  // corePlugins: {
+  //   preflight: false,
+  // }
 }

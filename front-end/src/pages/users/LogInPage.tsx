@@ -30,8 +30,8 @@ export default function LogInPage() {
     return (
         <div className="bg-no-repeat bg-cover h-screen flex items-center justify-center " style={{ backgroundImage: `url(${loginBackground})` }}>
             <form className="flex flex-col items-center justify-center bg-white/90 shadow-xl h-[22.5rem] w-[36.25rem] rounded-lg">
-                <h1>Log In</h1>
-                <div className="pt-10">
+                <h1 className="text-4xl">Welcome Back</h1>
+                <div className="pt-14 pb-4">
                     <label htmlFor="username">Username: </label>
                     <input
                         type="text"

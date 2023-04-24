@@ -12,12 +12,19 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String flowType;
+
     public Long getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getFlowType() {
+        return flowType;
     }
 
     public void setName(String name) {

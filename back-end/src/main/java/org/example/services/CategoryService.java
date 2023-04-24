@@ -11,8 +11,10 @@ public interface CategoryService {
 
     List<Category> findAllCategories();
 
-    Category findCategoryByName(String name);
+    List<Category> findCategoriesByFlowType (String flowType);
 
-    Category updateCategoryName(Long id);
+//    Category findCategoryByName(String name);
+
+//    Category updateCategoryName(Long id);
 
 }

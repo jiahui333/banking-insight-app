@@ -22,10 +22,12 @@ public class FootprintServiceImpl implements FootprintService {
    @Autowired
    private FootprintRepo footprintRepo;
 
+   @Autowired
+   private Map<String, Long> footprintVariableConstantsMap;
+
     @Override
     public BigDecimal saveAndReturnFootprintPerTrans(Transaction transaction) {
-        Map<String, Long> footprintVariables= FootprintVariableConstants.getFootprintVariableConstants();
-        for (Map.Entry<String, Long> entry : footprintVariables.entrySet()) {
+        for (Map.Entry<String, Long> entry : footprintVariableConstantsMap.entrySet()) {
             if (Objects.equals(entry.getKey(), transaction.getCategory().getName())) {
                 footprintVariable = entry.getValue();
             }

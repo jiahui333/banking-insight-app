@@ -5,11 +5,15 @@
 /*Navbar*/
 
 .text-logo {
-  @apply text-green-700 text-4xl font-logoFont
+  @apply text-logoColor text-4xl font-logoFont font-light
 }
 
+/*Headings*/
+h1 {
+  @apply text-h1Color
+}
 body {
-  @apply font-bodyFont font-bold;
+  @apply text-bodyColor font-bodyFont font-bold;
   height: 100vh;
   margin: 0;
   -webkit-font-smoothing: antialiased;

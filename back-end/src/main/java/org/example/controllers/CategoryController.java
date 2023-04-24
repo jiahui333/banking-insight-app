@@ -19,6 +19,11 @@ public class CategoryController {
         return categoryService.findAllCategories();
     }
 
+    @GetMapping("/{flowType}")
+    public List<Category> getCategoriesByFlowType(@PathVariable("flowType") String flowType) {
+        return categoryService.findCategoriesByFlowType(flowType);
+    }
+
     @PostMapping
     void saveCategory(@RequestBody Category category) {
         categoryService.saveCategory(category);

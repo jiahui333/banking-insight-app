@@ -118,7 +118,7 @@ export default function AddTransactionPage() {
                     />
                 </label>
                 <br />
-                <CategoryDropDown sendCategoryToTransaction = {handleDataFromCategoryDropDownComponent}/>
+                <CategoryDropDown sendCategoryToTransaction = {handleDataFromCategoryDropDownComponent} flowType={transaction.flowType}/>
                 <br />
                 <input type="submit" value="Submit" />
                 <Link to={`/accounts/${account_id}/transactions`}

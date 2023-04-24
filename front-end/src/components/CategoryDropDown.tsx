@@ -8,7 +8,7 @@ export function CategoryDropDown(props: TransactionProps): JSX.Element {
 
     async function fetchCategories () {
         try {
-            const response = await axios.get<Category[]>("http://localhost:8080/categories");
+            const response = await axios.get<Category[]>(`http://localhost:8080/categories/${props.flowType}`);
             setCategories(response.data);
             console.log(categories);
         } catch (error) {
@@ -25,14 +25,16 @@ export function CategoryDropDown(props: TransactionProps): JSX.Element {
     useEffect(() => {
         void fetchCategories();
         console.log(categories);
-    }, []);
+    }, [props.flowType]);
 
     return (
         <div>
             <label> Category: </label>
+
             <select
                 onChange={(e => handleSelectedCategory(e))}
             >
+                <option value="">Please select...</option>
                 {categories.map((category) => (
                     <option key={category.id} value={JSON.stringify(category)}>
                         {category.name}

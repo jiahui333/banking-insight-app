@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface CategoryRepo extends JpaRepository<Category, Long> {
     Category findCategoryByName(String name);
+
+    List<Category> findAllByFlowType(String flowType);
 }
