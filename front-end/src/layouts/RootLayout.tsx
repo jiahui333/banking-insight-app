@@ -17,8 +17,17 @@ export function RootLayout() {
                         </h1>
                     </div>
                     <div className="flex items-center">
-                        <NavLink to="/accounts" className="text-logoColor"> Accounts </NavLink>
-                        <NavLink to="/footprint" className="text-logoColor ml-12"> Footprint </NavLink>
+                        <NavLink to="/accounts"
+                                 className={({ isActive }) =>
+                                     isActive ? "text-h1Color underline" : "text-logoColor"
+                        }>
+                            Accounts
+                        </NavLink>
+                        <NavLink to="/footprint"  className={({ isActive }) =>
+                            `ml-12 ${isActive ? 'text-h1Color underline' : 'text-logoColor'}`
+                        }>
+                            Footprint
+                        </NavLink>
                     </div>
                 </nav>
             </header>
