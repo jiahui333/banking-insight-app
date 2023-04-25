@@ -12,10 +12,12 @@ module.exports = {
       colors: {
         //baseColor: #15803D
         'logoColor': '#15803D',
-        // 60% base
+        // +60% base
         'h1Color': '#083318',
-        // 80% base
+        // +80% base
         'bodyColor': '#041a0c',
+        // -70% base
+        'lightColor': '#b9d9c5',
       },
     },
   },

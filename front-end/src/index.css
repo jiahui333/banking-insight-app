@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/*Navbar*/
 
+/*Navbar*/
 .text-logo {
   @apply text-logoColor text-4xl font-logoFont font-light
 }
@@ -13,9 +13,8 @@ h1 {
   @apply text-h1Color
 }
 body {
-  @apply text-bodyColor font-bodyFont font-bold;
-  height: 100vh;
-  margin: 0;
+  @apply text-bodyColor font-bodyFont font-bold h-screen bg-cover;
+  background-image: url("./assets/loginBackground.svg");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
