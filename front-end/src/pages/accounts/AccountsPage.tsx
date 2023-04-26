@@ -40,7 +40,7 @@ export default function AccountsPage() {
     })
 
     return (
-        <div className="pt-20">
+        <div className="flex items-center justify-center flex-col bg-white/90 shadow-xl rounded-lg w-3/5 m-auto">
             <h1>Accounts</h1>
             <table>
                 <tr>

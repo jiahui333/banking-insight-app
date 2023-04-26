@@ -4,6 +4,7 @@
 
 
 /*Navbar*/
+
 .text-logo {
   @apply text-logoColor text-4xl font-logoFont font-light
 }
@@ -13,8 +14,8 @@ h1 {
   @apply text-h1Color
 }
 body {
-  @apply text-bodyColor font-bodyFont font-bold h-screen bg-cover;
-  background-image: url("./assets/loginBackground.svg");
+  @apply text-bodyColor font-bodyFont font-bold bg-cover bg-no-repeat h-screen;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/background.jpg");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

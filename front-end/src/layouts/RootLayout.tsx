@@ -1,4 +1,4 @@
-import treeLogo from "../assets/treeLogo.png";
+import lightGreenTreeLogo from "../assets/lightGreenTreeLogo.png";
 import {NavLink, Outlet, useLocation} from "react-router-dom";
 
 export function RootLayout() {
@@ -9,17 +9,17 @@ export function RootLayout() {
         <div className="px-20 py-14">
             {!hideHeader &&
                 <header>
-                <nav className="w-full flex justify-between block -z-10">
+                <nav className="w-full flex justify-between block -z-10 pb-14">
                     <div className="flex">
-                        <img src={treeLogo} className="object-cover h-10 mr-2"/>
+                        <img src={lightGreenTreeLogo} className="object-cover h-10 mr-2"/>
                         <h1 className="text-logo">
                             Greeny Insight
                         </h1>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-end">
                         <NavLink to="/accounts"
                                  className={({ isActive }) =>
-                                     isActive ? "text-h1Color underline" : "text-logoColor"
+                                     `text-logoColor ${isActive ? "underline" : ""}`
                         }>
                             Accounts
                         </NavLink>

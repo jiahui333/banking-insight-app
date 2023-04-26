@@ -11,7 +11,7 @@ module.exports = {
       },
       colors: {
         //baseColor: #15803D
-        'logoColor': '#15803D',
+        'logoColor': '#d0e6d8',
         // +60% base
         'h1Color': '#083318',
         // +80% base
@@ -21,7 +21,4 @@ module.exports = {
       },
     },
   },
-  // corePlugins: {
-  //   preflight: false,
-  // }
 }
