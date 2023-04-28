@@ -7,7 +7,7 @@ export function RootLayout() {
 
     return(
         <div className="px-20 py-14">
-            {!hideHeader &&
+            {!hideHeader  &&
                 <header>
                 <nav className="w-full flex justify-between block -z-10 pb-14">
                     <div className="flex">
@@ -19,12 +19,12 @@ export function RootLayout() {
                     <div className="flex items-end">
                         <NavLink to="/accounts"
                                  className={({ isActive }) =>
-                                     `text-logoColor ${isActive ? "underline" : ""}`
+                                     `text-white ${isActive ? "underline" : ""}`
                         }>
                             Accounts
                         </NavLink>
                         <NavLink to="/footprint"  className={({ isActive }) =>
-                            `ml-12 ${isActive ? 'text-h1Color underline' : 'text-logoColor'}`
+                            `ml-12 text-white ${isActive ? 'underline' : ''}`
                         }>
                             Footprint
                         </NavLink>
@@ -33,7 +33,7 @@ export function RootLayout() {
             </header>
             }
 
-            <main>
+            <main className="flex justify-center items-center">
                 <Outlet />
             </main>
         </div>

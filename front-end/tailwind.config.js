@@ -11,13 +11,15 @@ module.exports = {
       },
       colors: {
         //baseColor: #15803D
-        'logoColor': '#d0e6d8',
+        'baseColor': '#15803D',
+        //-80% base
+        'logoColor20': '#d0e6d8',
         // +60% base
-        'h1Color': '#083318',
+        'darkColor160': '#083318',
         // +80% base
-        'bodyColor': '#041a0c',
+        'bodyColor180': '#041a0c',
         // -70% base
-        'lightColor': '#b9d9c5',
+        'lightColor30': '#b9d9c5',
       },
     },
   },

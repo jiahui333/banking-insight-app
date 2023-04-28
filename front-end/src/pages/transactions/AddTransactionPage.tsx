@@ -4,6 +4,7 @@ import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import {CategoryDropDown} from "../../components/CategoryDropDown";
 import {Category} from "../../types/CategoryType";
 import {Transaction} from "../../types/TransactionType";
+import {TransactionPageButton} from "../../components/Buttons";
 
 export default function AddTransactionPage() {
 
@@ -67,29 +68,33 @@ export default function AddTransactionPage() {
 
 
     return (
-        <div>
-            <h1>New Transaction</h1>
+        <div className="flex items-center justify-center flex-col bg-white/90 shadow-xl rounded-lg w-3/5 m-auto p-12 text-bodyColor180 ">
+            <h1 className="title">New Transaction</h1>
             <form onSubmit={(e => onSubmitForm(e))}>
-                <label>
-                    Outflow:
-                    <input
-                        type="checkbox"
-                        checked={flowType === "outflow"}
-                        onChange={checkOutflow}
-                    />
-                </label>
-                <label>
-                    Inflow:
-                    <input
-                        type="checkbox"
-                        checked={flowType === "inflow"}
-                        onChange={checkInflow}
-                    />
-                </label>
-                <br />
+                <div className="flex justify-between mb-4">
+                    <label>
+                        Outflow:
+                        <input
+                            className="ml-1"
+                            type="checkbox"
+                            checked={flowType === "outflow"}
+                            onChange={checkOutflow}
+                        />
+                    </label>
+                    <label>
+                        Inflow:
+                        <input
+                            className="ml-1"
+                            type="checkbox"
+                            checked={flowType === "inflow"}
+                            onChange={checkInflow}
+                        />
+                    </label>
+                </div>
                 <label>
                     Sender:
                     <input
+                        className="input mb-3"
                         type="text"
                         name="sender"
                         onChange={(e => onInputChange(e))}
@@ -101,6 +106,7 @@ export default function AddTransactionPage() {
                 <label>
                     Receiver:
                     <input
+                        className="input mb-3"
                         type="text"
                         name="receiver"
                         onChange={(e => onInputChange(e))}
@@ -112,6 +118,7 @@ export default function AddTransactionPage() {
                 <label>
                     Amount:
                     <input
+                        className="input mb-3"
                         type="text"
                         name="amount"
                         value={transaction.amount}
@@ -121,11 +128,13 @@ export default function AddTransactionPage() {
                 <br />
                 <CategoryDropDown sendCategoryToTransaction = {handleDataFromCategoryDropDownComponent} flowType={transaction.flowType}/>
                 <br />
-                <input type="submit" value="Submit" />
-                <Link to={`/accounts/${account_id}/transactions`}
-                      state={{iban: iban}}>
-                    <input type="button" value="Cancel" />
-                </Link>
+                <div className="flex justify-around mt-6">
+                    {TransactionPageButton("Submit")}
+                    <Link to={`/accounts/${account_id}/transactions`}
+                          state={{iban: iban}}>
+                        {TransactionPageButton("Cancel")}
+                    </Link>
+                </div>
             </form>
         </div>
     )

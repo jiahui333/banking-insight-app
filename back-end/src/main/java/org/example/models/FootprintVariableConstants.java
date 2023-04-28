@@ -10,7 +10,7 @@ public class FootprintVariableConstants {
     public static final Long GROCERY = 802L;
     public static final Long ENERGY = 604L;
     public static final Long RESTAURANT = 802L;
-    public static final Long BAKERIESANDCAFE= 802L;
+    public static final Long CAFE= 802L;
     public static final Long CLOTHES = 1143L;
     public static final Long PHARMACY = 105L;
     public static final Long PUBLICTRANSPORT = 105L;
@@ -24,7 +24,7 @@ public class FootprintVariableConstants {
         footprintVariables.put("Grocery", GROCERY);
         footprintVariables.put("Energy", ENERGY);
         footprintVariables.put("Restaurant", RESTAURANT);
-        footprintVariables.put("Bakeries & Cafe", BAKERIESANDCAFE);
+        footprintVariables.put("Cafe", CAFE);
         footprintVariables.put("Clothes", CLOTHES);
         footprintVariables.put("Pharmacy", PHARMACY);
         footprintVariables.put("Public transport", PUBLICTRANSPORT);

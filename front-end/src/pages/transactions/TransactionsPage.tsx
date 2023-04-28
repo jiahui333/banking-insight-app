@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useLocation, useParams} from "react-router-dom";
 import type {Transaction} from "../../types/TransactionType";
+import {TransactionPageButton} from "../../components/Buttons";
 
 export default function TransactionsPage() {
 
@@ -29,17 +30,15 @@ export default function TransactionsPage() {
         console.log(typeof transaction.localDate)
         return (
             <tr>
-                <td>{transaction.id}</td>
-                <td>{transaction.account.iban}</td>
                 <td>{transaction.sender}</td>
                 <td>{transaction.receiver}</td>
                 <td>{transaction.amount}</td>
                 <td>{transaction.flowType}</td>
-                <td>{transaction.category.name}</td>
+                <td className="big">{transaction.category.name}</td>
                 <td>{transaction.localDate}</td>
                 <td>{transaction.footprint}</td>
                 <td>
-                    <button onClick={()=>deleteTransaction(transaction.id)}>Delete</button>
+                    <button className="text-black" onClick={()=>deleteTransaction(transaction.id)}>&#128465;</button>
                 </td>
             </tr>
         )
@@ -51,35 +50,36 @@ export default function TransactionsPage() {
     }
 
     return (
-        <div>
-            <h1>Transactions</h1>
-            <table>
+        <div className="flex items-center justify-center flex-col bg-white/90 shadow-xl rounded-lg m-auto py-12 px-40 text-bodyColor180">
+            <h1 className="title">Transactions</h1>
+            <table className="text-left mb-20">
+                <p>Account:&nbsp;{iban}</p>
+                <br />
                 <tbody>
                     <tr>
-                        <th>#</th>
-                        <th>Account</th>
                         <th>Sender</th>
                         <th>Receiver</th>
                         <th>Amount</th>
                         <th>Flow type</th>
-                        <th>Category</th>
+                        <th className="big">Category</th>
                         <th>Date</th>
                         <th>Footprint</th>
                     </tr>
                     {listTransactions}
                 </tbody>
             </table>
-            <Link to={`/accounts/${account_id}/transactions/add`}
-            state={{
-                iban: iban
-            }}>
-
-                <button>Add transaction</button>
-            </Link>
-            <br/>
-            <Link to={"/accounts"}>
-                <button>Return to accounts</button>
-            </Link>
+            <div className="flex gap-10">
+                <Link to={`/accounts/${account_id}/transactions/add`}
+                state={{
+                    iban: iban
+                }}>
+                    {TransactionPageButton("Add Transaction")}
+                </Link>
+                <br/>
+                <Link to={"/accounts"}>
+                    {TransactionPageButton("Return to Accounts")}
+                </Link>
+            </div>
         </div>
     )
 }

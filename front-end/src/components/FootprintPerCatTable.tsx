@@ -20,24 +20,31 @@ export function FootprintPerCatTable() {
     }, []);
 
     return (
-
-
-        <table>
-            {Object.entries(categoryFootprintPairs).map(([categoryName, amount]) =>
-                <tr>
-                    <th>{categoryName}</th>
+        <table className="text-center">
+            <thead>
+            <tr>
+                <th>Category</th>
+                <th>Amount(gCO2)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {Object.entries(categoryFootprintPairs).map(([categoryName, amount]) => (
+                <tr key={categoryName}>
+                    <td>{categoryName}</td>
                     <td>{amount}</td>
                 </tr>
-            )}
+            ))}
             <tr>
-                <th>
-                    Total
-                </th>
-                <td>
-                    {totalAmount}
+                <td colSpan={2}>
+                    <hr/>
                 </td>
             </tr>
+            <tr>
+                <td>Total</td>
+                <td>{totalAmount}</td>
+            </tr>
+            </tbody>
         </table>
-    )
+    );
 }
 
