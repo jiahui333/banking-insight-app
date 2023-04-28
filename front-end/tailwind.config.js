@@ -21,6 +21,9 @@ module.exports = {
         // -70% base
         'lightColor30': '#b9d9c5',
       },
+      corePlugins: {
+        preflight: false,
+      }
     },
   },
 }

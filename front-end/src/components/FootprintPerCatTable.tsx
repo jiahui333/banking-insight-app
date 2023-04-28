@@ -28,12 +28,18 @@ export function FootprintPerCatTable() {
             </tr>
             </thead>
             <tbody>
-            {Object.entries(categoryFootprintPairs).map(([categoryName, amount]) => (
-                <tr key={categoryName}>
-                    <td>{categoryName}</td>
-                    <td>{amount}</td>
-                </tr>
-            ))}
+            {Object.entries(categoryFootprintPairs).map(([categoryName, amount]) => {
+                if (amount !== 0) {
+                    return (
+                        <tr key={categoryName}>
+                            <td>{categoryName}</td>
+                            <td>{amount}</td>
+                        </tr>
+                    );
+                } else {
+                    return null;
+                }
+            })}
             <tr>
                 <td colSpan={2}>
                     <hr/>
