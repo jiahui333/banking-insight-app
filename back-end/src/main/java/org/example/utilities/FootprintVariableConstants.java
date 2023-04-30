@@ -1,4 +1,4 @@
-package org.example.models;
+package org.example.utilities;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

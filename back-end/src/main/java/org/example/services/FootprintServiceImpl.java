@@ -1,8 +1,6 @@
 package org.example.services;
 
-import org.example.models.Category;
 import org.example.models.Footprint;
-import org.example.models.FootprintVariableConstants;
 import org.example.models.Transaction;
 import org.example.repositories.FootprintRepo;
 import org.springframework.beans.factory.annotation.Autowired;
