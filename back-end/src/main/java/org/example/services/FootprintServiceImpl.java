@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,7 @@ public class FootprintServiceImpl implements FootprintService {
         BigDecimal footprintAmount = transaction.getAmount().multiply(BigDecimal.valueOf(footprintVariable));
         Footprint footprint = new Footprint();
         footprint.setAmount(footprintAmount);
+        footprint.setDate(transaction.getLocalDate());
         footprint.setCategory(transaction.getCategory());
         footprintRepo.save(footprint);
         return footprintAmount;
@@ -58,4 +60,24 @@ public class FootprintServiceImpl implements FootprintService {
 
         return categoryAmountMap;
     }
+
+    @Override
+    public Map<String, BigDecimal> calculateYearMonthFootprintMap() {
+        List<Footprint> footprintList = footprintRepo.findAll();
+        Map<String, BigDecimal> dateAmountMap = new HashMap<>();
+
+        for (Footprint footprint : footprintList) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
+            String yearMonthDate = footprint.getDate().format(formatter);
+            BigDecimal amount = footprint.getAmount();
+
+            if (dateAmountMap.containsKey(yearMonthDate)) {
+                dateAmountMap.put(yearMonthDate, dateAmountMap.get(yearMonthDate).add(amount));
+            } else {
+                dateAmountMap.put(yearMonthDate, amount);
+            }
+        }
+        return dateAmountMap;
+    }
+
 }

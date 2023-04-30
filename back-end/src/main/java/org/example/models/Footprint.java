@@ -2,6 +2,7 @@ package org.example.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "footprint")
@@ -13,6 +14,17 @@ public class Footprint {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @Column
+    private LocalDate date;
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
     @Column
     private BigDecimal amount;

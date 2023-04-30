@@ -6,8 +6,8 @@ export function FootprintPerCatTable() {
 
     const [categoryFootprintPairs, setCategoryFootprintPairs] = useState<{[categoryName: string]: number}>({});
 
-    async function loadFootprint() {
-        const response = await axios.get(`http://localhost:8080/footprint`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
+    async function loadFootprintPerCategory() {
+        const response = await axios.get(`http://localhost:8080/footprint/per-category`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
         setCategoryFootprintPairs(response.data);
     }
 
@@ -16,7 +16,7 @@ export function FootprintPerCatTable() {
 
 
     useEffect(() => {
-        void loadFootprint();
+        void loadFootprintPerCategory();
     }, []);
 
     return (

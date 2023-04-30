@@ -21,8 +21,13 @@ public class FootprintController {
     @Autowired
     FootprintService footprintService;
 
-    @GetMapping
-    public Map<String, BigDecimal> getAllFootprint() {
+    @GetMapping("/per-category")
+    public Map<String, BigDecimal> getAllFootprintPerCategory() {
         return footprintService.calculateCategoryFootprintMap();
+    }
+
+    @GetMapping("/per-year-month")
+    public Map<String, BigDecimal> getAllFootprintPerYearMonth() {
+        return footprintService.calculateYearMonthFootprintMap();
     }
 }

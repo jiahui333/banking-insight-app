@@ -12,4 +12,6 @@ import java.util.Map;
 public interface FootprintService {
     BigDecimal saveAndReturnFootprintPerTrans(Transaction transaction);
     Map<String, BigDecimal> calculateCategoryFootprintMap();
+
+    Map<String, BigDecimal> calculateYearMonthFootprintMap();
 }
