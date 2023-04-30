@@ -13,10 +13,10 @@ export default function FootprintPage() {
     return (
         <div className="w-3/5 bg-white/90 shadow-xl rounded-lg m-auto">
             <div className="w-full flex justify-around h-10">
-                <button className={activeTab === "Per Category" ? "rounded-tl-lg font-bold w-1/2" : "rounded-tl-lg bg-white/60 w-1/2"} onClick={() => handleTabClick("Per Category")}>
+                <button className={`rounded-tl-lg w-1/2 ${activeTab === "Per Category" ? "font-bold" : "bg-white/60"}`} onClick={() => handleTabClick("Per Category")}>
                     Per Category
                 </button>
-                <button className={activeTab === "Per Month" ? "rounded-tr-lg font-bold w-1/2" : "rounded-tr-lg bg-white/60 w-1/2"} onClick={() => handleTabClick("Per Month")}>
+                <button className={`rounded-tr-lg w-1/2 ${activeTab === "Per Month" ? "font-bold" : "bg-white/60"}`} onClick={() => handleTabClick("Per Month")}>
                     Per Month
                 </button>
             </div>
