@@ -22,11 +22,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .input {
   @apply ml-1 border-b-2 border-lightColor30 bg-transparent;
 }
