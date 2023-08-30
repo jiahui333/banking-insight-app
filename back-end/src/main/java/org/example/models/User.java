@@ -15,11 +15,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
-    @Column(name = "second_name", nullable = false)
-    private String secondName;
+    @Column(nullable = false)
+    private String email;
 
     @Column(nullable = false)
     private String username;
@@ -30,6 +27,14 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setRole(Role role) {
         this.role = role;
     }
@@ -38,24 +43,8 @@ public class User implements UserDetails {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
     public String getUsername() {
         return username;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
     }
 
     public void setUsername(String username) {
