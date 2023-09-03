@@ -10,9 +10,9 @@ module.exports = {
         'bodyFont': ['Montserrat', 'sans-serif']
       },
       colors: {
-        //baseColor: #15803D
+        // baseColor: #15803D
         'baseColor': '#15803D',
-        //-80% base
+        // -80% base
         'logoColor20': '#d0e6d8',
         // +60% base
         'darkColor160': '#083318',
@@ -20,6 +20,8 @@ module.exports = {
         'bodyColor180': '#041a0c',
         // -70% base
         'lightColor30': '#b9d9c5',
+        // -90% base
+        'lightColor10': '#e8f2ec',
       },
       corePlugins: {
         preflight: false,

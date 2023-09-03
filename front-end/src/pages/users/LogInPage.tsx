@@ -52,7 +52,6 @@ export default function LogInPage() {
                         type="text"
                         name="username"
                         id="username"
-                        value = {username}
                         onChange={e => {setUsername(e.target.value)}}
                         required />
                 </div>
@@ -63,7 +62,6 @@ export default function LogInPage() {
                         type="password"
                         name="pass"
                         id="password"
-                        value = {password}
                         onChange={e => {setPassword(e.target.value)}}
                         required />
                 </div>

@@ -1,17 +1,24 @@
 import React, {useState} from "react";
 import axios from "axios";
+import {FaEye, FaEyeSlash} from "react-icons/fa6";
+import {Link} from "react-router-dom";
+import {TransactionPageButton} from "../../components/Buttons";
+
+const PASSWORD_REGEX = /^.{8,}$/;
 
 export default function RegisterPage() {
 
     const [jwt, setJwt] = useState("");
-
-    const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
+
     const [password, setPassword] = useState("");
+    const [validPassword, setValidPassword] = useState(false);
+
+    const [type, setType] = useState("password");
+    const [icon, setIcon] = useState(<FaEyeSlash/>);
 
     function sendRegisterRequest(e: React.MouseEvent<HTMLInputElement>) {
         const requestBody = {
-            "email": email,
             "username": username,
             "password": password
         }
@@ -23,45 +30,64 @@ export default function RegisterPage() {
         localStorage.setItem("jwt", jwt);
     }
 
-    return (
-        <div className="mt-56">
-            <form className="flex flex-col items-center justify-center bg-white/90 shadow-xl h-[22.5rem] w-[36.25rem] rounded-lg">
-                <h1 className="text-4xl font-bold text-baseColor">
-                    Register
-                </h1>
-                <div className="pt-12 pb-4">
-                    <label htmlFor="email">Email: </label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        value = {email}
-                        onChange={e => {setEmail(e.target.value)}}
-                        required />
-                </div>
+    function handleEyeToggle() {
+        if (icon.type === FaEyeSlash ) {
+            setIcon(<FaEye />)
+            setType("text")
+        } else {
+            setIcon(<FaEyeSlash />)
+            setType("password")
+        }
+    }
 
-                <div className="pb-8">
-                    <label htmlFor="username">Username: </label>
+    return (
+        <div className="mt-56 px-32 bg-white/90 shadow-xl h-[38rem] w-[36.25rem] rounded-lg">
+                <h1 className="my-20 text-center text-3xl font-bold text-baseColor">
+                    Get Started
+                </h1>
+            <form className="flex flex-col items-center justify-center content-center w-full">
+                <div className="pb-8 w-full">
+                    <label htmlFor="username">Username</label>
+                    <br/>
                     <input
+                        className="input w-full font-bold"
                         type="text"
                         name="username"
                         id="username"
-                        value = {username}
-                        onChange={e => {setUsername(e.target.value)}}
+                        autoComplete="off"
+                        onChange={(e) => {setUsername(e.target.value)}}
                         required />
                 </div>
-                <div className="pb-8">
+                <div className="pb-8 w-full">
                     <label htmlFor="password">Password </label>
-                    <input
-                        type="password"
-                        name="pass"
-                        id="password"
-                        value = {password}
-                        onChange={e => {setPassword(e.target.value)}}
-                        required />
+                    <br/>
+                    <div className="relative">
+                        <span className="absolute right-0.5 bottom-1.5 text-baseColor cursor-pointer" onClick={handleEyeToggle}>{icon}</span>
+                        <input
+                            className="input w-full font-bold"
+                            type={type}
+                            name="password"
+                            id="password"
+                            autoComplete="off"
+                            onChange={(e) => {setPassword(e.target.value)}}
+                            required />
+                    </div>
+                    <small>Minimum eight characters</small>
                 </div>
-                <div>
-                    <input type="submit" value="Submit" onClick={e => sendRegisterRequest(e)}/>
+
+                <div className="bg-darkColor160 text-lightColor10 font-bold text-center w-full py-2 rounded">
+                    <input
+                        type="submit"
+                        value="Submit"
+                        onClick={e => sendRegisterRequest(e)}
+                    />
+                </div>
+
+                <div className="inline-block text-left">
+                    <small>Already have an account? </small>
+                    <Link to="/">
+                        <p className="text-sm underline underline-offset-4 decoration-2 decoration-lightColor30 inline">Log In</p>
+                    </Link>
                 </div>
             </form>
         </div>

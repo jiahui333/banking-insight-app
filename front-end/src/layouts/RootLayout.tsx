@@ -3,10 +3,10 @@ import {NavLink, Outlet, useLocation} from "react-router-dom";
 
 export function RootLayout() {
     const location = useLocation();
-    const hideHeader = location.pathname === "/";
+    const hideHeader = location.pathname === "/" || location.pathname === "/register";
 
     return(
-        <div className="px-20 py-14">
+        <div>
             {!hideHeader  &&
                 <header>
                 <nav className="w-full flex justify-between block -z-10 pb-14">

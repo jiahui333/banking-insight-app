@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 
+* {
+  margin: 0;
+  padding: 0;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 /*Navbar*/
 
 .text-logo {
@@ -23,7 +32,7 @@ body {
 }
 
 .input {
-  @apply ml-1 border-b-2 border-lightColor30 bg-transparent;
+  @apply border-b-2 border-lightColor30 bg-transparent;
 }
 
 table {

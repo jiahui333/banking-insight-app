@@ -2,17 +2,8 @@ package org.example.jwtconfig;
 
 
 public class RegisterRequest {
-    private String email;
     private String username;
     private String password;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getUsername() {
         return username;
@@ -30,8 +21,7 @@ public class RegisterRequest {
         this.password = password;
     }
 
-    public RegisterRequest(String email, String username, String password) {
-        this.email = email;
+    public RegisterRequest(String username, String password) {
         this.username = username;
         this.password = password;
     }

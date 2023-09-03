@@ -16,9 +16,6 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
@@ -26,14 +23,6 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public void setRole(Role role) {
         this.role = role;
