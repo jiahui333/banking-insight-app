@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import {SubmitButton} from "../../components/Buttons";
+import {Form} from "../../components/Form";
+import {FaCircleExclamation} from "react-icons/fa6";
 
 export default function LogInPage() {
     const [username, setUsername] = useState("");
@@ -11,12 +12,12 @@ export default function LogInPage() {
 
     const navigate = useNavigate();
 
-   function sendLogInRequest(e: React.MouseEvent<HTMLButtonElement>) {
+   function sendLogInRequest(e: React.MouseEvent<HTMLInputElement>) {
+         e.preventDefault();
         const requestBody = {
             "username": username,
             "password": password
         }
-        e.preventDefault();
        axios.post("http://localhost:8080/user/authenticate", requestBody)
             .then(res => {
                 const jwt = res.data.jwtToken
@@ -34,44 +35,24 @@ export default function LogInPage() {
     function getErrorView() {
        if (error) {
            return (
-               <div className="pt-4">
-                   <p>Ops, wrong credentials. Please try again.</p>
-               </div>
+               <p><FaCircleExclamation className="inline text-darkColor160"/> Ops, wrong credentials. Please try again.</p>
            )
        }
     }
 
     return (
-        <div className="mt-56">
-            <form className="flex flex-col items-center justify-center bg-white/90 shadow-xl h-[22.5rem] w-[36.25rem] rounded-lg">
-                <h1 className="text-4xl font-bold text-baseColor">Log In</h1>
-                <div className="pt-12 pb-4">
-                    <label htmlFor="username">Username: </label>
-                    <input
-                        className="input"
-                        type="text"
-                        name="username"
-                        id="username"
-                        onChange={e => {setUsername(e.target.value)}}
-                        required />
-                </div>
-                <div className="pb-8">
-                    <label htmlFor="password">Password: </label>
-                    <input
-                        className="input"
-                        type="password"
-                        name="pass"
-                        id="password"
-                        onChange={e => {setPassword(e.target.value)}}
-                        required />
-                </div>
-                <div>
-                    <SubmitButton onClick={(e) => sendLogInRequest(e)}/>
-                </div>
-                {getErrorView()}
-            </form>
-
-        </div>
+        <Form
+            title="Welcome Back"
+            errView={getErrorView()}
+            username={username}
+            password={password}
+            passComment=""
+            setUsername={setUsername}
+            setPassword={setPassword}
+            sendRequest={sendLogInRequest}
+            alternativeMessage = "Do not have an account?"
+            alternativePath="/register"
+            alternativePathName="Register"
+        />
     )
-
 }
