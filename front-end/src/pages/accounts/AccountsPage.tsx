@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import type { Account } from "../../types/AccountType";
 import {Link, useLocation} from "react-router-dom";
+import {PageButton} from "../../components/Buttons";
 
 export default function AccountsPage() {
     // const { username } = useLocation().state as {username: string};
@@ -50,6 +51,11 @@ export default function AccountsPage() {
                 </tr>
                 {listAccounts}
             </table>
+            <div className="mt-12">
+                <Link to={`/accounts/add`}>
+                    {PageButton("Add Account")}
+                </Link>
+            </div>
         </div>
     )
 }

@@ -57,13 +57,13 @@ export function Form(props: FormProps) {
                     <small>{props.passComment}</small>
                 </div>
 
-                <div className="bg-darkColor160 text-lightColor10 font-bold text-center w-full py-2 rounded">
-                    <input
-                        type="submit"
-                        value="Submit"
-                        onClick={props.sendRequest}
-                    />
-                </div>
+                <input
+                    className="bg-darkColor160 text-lightColor10 font-bold text-center w-full py-2 rounded cursor-pointer"
+                    type="submit"
+                    value="Submit"
+                    onClick={props.sendRequest}
+                />
+
 
                 <div className="inline-block text-left">
                     <p className="text-sm inline">{props.alternativeMessage} </p>

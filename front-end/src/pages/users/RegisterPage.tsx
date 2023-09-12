@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import {Form} from "../../components/Form";
 import {FaCircleExclamation} from "react-icons/fa6";
+import {useNavigate} from "react-router-dom";
 
 const PASSWORD_REGEX = /^.{8,}$/;
 
@@ -12,6 +13,8 @@ export default function RegisterPage() {
 
     const [password, setPassword] = useState("");
     const [valid, setValid] = useState(true)
+
+    const navigate = useNavigate();
 
     function validatePasswordFormat() {
         if (!valid) {
@@ -33,9 +36,11 @@ export default function RegisterPage() {
             }
             axios.post("http://localhost:8080/user/register", requestBody)
                 .then(res => {
+                    const jwt = res.data.jwtToken
                     setJwt(JSON.stringify(res.data.jwtToken))
+                    localStorage.setItem("jwt", jwt);
+                    navigate("/accounts", { state: { username: requestBody.username } });
                 })
-            localStorage.setItem("jwt", jwt);
         }
     }
 

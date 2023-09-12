@@ -25,8 +25,7 @@ public class AccountServiceImpl implements AccountService {
     private BigDecimal transactionAmount;
 
     @Override
-    public void saveAccount(Account account, User user) {
-        account.setUser(user);
+    public void saveAccount(Account account) {
         accountRepo.save(account);
     }
 
@@ -38,6 +37,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> findAccountsByUser(User user) {
         return accountRepo.findAllByUser(user);
+    }
+
+    @Override
+    public Long findMaxAccountId() {
+        return accountRepo.findMaxAccountId();
     }
 
 
@@ -78,11 +82,4 @@ public class AccountServiceImpl implements AccountService {
         accountRepo.save(account);
     }
 }
-
-
-//        List<Transaction> allTransactions = transactionRepo.findAllByAccount(account);
-//        BigDecimal allTransactionsAmount = allTransactions.stream().map(Transaction::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
-//        BigDecimal currentBalance = account.getBalance();
-//        account.setBalance(allTransactionsAmount.add(currentBalance));
-//        accountRepo.save(account);
 

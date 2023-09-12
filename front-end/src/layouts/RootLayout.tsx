@@ -6,10 +6,10 @@ export function RootLayout() {
     const hideHeader = location.pathname === "/" || location.pathname === "/register";
 
     return(
-        <div>
+        <div className="px-20">
             {!hideHeader  &&
                 <header>
-                <nav className="w-full flex justify-between block -z-10 pb-14">
+                <nav className="w-full flex justify-between block -z-10 py-14">
                     <div className="flex">
                         <img src={lightGreenTreeLogo} className="object-cover h-10 mr-2"/>
                         <h1 className="text-logo">

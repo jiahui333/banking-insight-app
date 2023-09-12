@@ -11,7 +11,7 @@ export default function FootprintPage() {
     };
 
     return (
-        <div className="w-3/5 bg-white/90 shadow-xl rounded-lg m-auto">
+        <div className="w-3/5 bg-white/90 shadow-xl rounded-lg m-auto h-[500px]">
             <div className="w-full flex justify-around h-10">
                 <button className={`rounded-tl-lg w-1/2 ${activeTab === "Per Category" ? "font-bold" : "bg-white/60"}`} onClick={() => handleTabClick("Per Category")}>
                     Per Category

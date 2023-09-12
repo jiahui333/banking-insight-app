@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne
@@ -39,6 +39,10 @@ public class Account {
         return balance;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setUser(User user) {
     this.user = user;
 }
@@ -47,14 +51,15 @@ public class Account {
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "IBAN='" + iban + "\'" +
-                ", user=" + user.getUsername() +
-                ", balance=" + balance +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        System.out.println("Value of someVariable: " + iban + user + balance);
+//        return "Account{" +
+//                "IBAN='" + iban + "\'" +
+//                ", user=" + user.getUsername() +
+//                ", balance=" + balance +
+//                '}';
+//    }
 
 
 }

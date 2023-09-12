@@ -13,17 +13,18 @@ import LogInPage from "./pages/users/LogInPage";
 import FootprintPage from "./pages/footprint/FootprintPage";
 import {RootLayout} from "./layouts/RootLayout";
 import RegisterPage from "./pages/users/RegisterPage";
-
+import AddAccountPage from "./pages/accounts/AddAccountPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route element={<RootLayout />}>
             <Route path="/" element={<LogInPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/accounts" element={<AccountsPage/>} />
-            <Route path="/accounts/:id/transactions" element={<TransactionsPage/>} />
-            <Route path="/accounts/:id/transactions/add" element={<AddTransactionPage/>} />
-            <Route path="/footprint" element={<FootprintPage/>} />
+            <Route path="/accounts" element={<AccountsPage />} />
+            <Route path="/accounts/add" element={<AddAccountPage />} />
+            <Route path="/accounts/:id/transactions" element={<TransactionsPage />} />
+            <Route path="/accounts/:id/transactions/add" element={<AddTransactionPage />} />
+            <Route path="/footprint" element={<FootprintPage />} />
         </Route>
     )
 )

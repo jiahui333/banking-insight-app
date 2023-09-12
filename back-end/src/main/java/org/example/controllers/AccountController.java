@@ -25,11 +25,17 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-
-    @PostMapping
-    public void saveAccount(@RequestBody Account account) {
-        User currentUser = userService.findUserById(1L).get();
-        accountService.saveAccount(account, currentUser);
+    @PostMapping("/add")
+    public void saveAccount(@RequestBody Account account, Principal principal) {
+//        System.out.println(("Received account data: " + account.toString()));
+        System.out.println("--------- Received account data: " + account);
+        Long nextAccountId = accountService.findMaxAccountId() + 1;
+        System.out.println("---the next id is:" + nextAccountId);
+        account.setId(nextAccountId);
+        User currentUser = userService.findByUsername(principal.getName());
+        account.setUser(currentUser);
+        System.out.println("---the account id is set to" + account.getId());
+        accountService.saveAccount(account);
     }
 
     @GetMapping("/{account_id}")

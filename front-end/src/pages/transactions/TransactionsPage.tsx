@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useLocation, useParams} from "react-router-dom";
 import type {Transaction} from "../../types/TransactionType";
-import {TransactionPageButton} from "../../components/Buttons";
+import {PageButton} from "../../components/Buttons";
 
 export default function TransactionsPage() {
 
@@ -73,11 +73,11 @@ export default function TransactionsPage() {
                 state={{
                     iban: iban
                 }}>
-                    {TransactionPageButton("Add Transaction")}
+                    {PageButton("Add Transaction")}
                 </Link>
                 <br/>
                 <Link to={"/accounts"}>
-                    {TransactionPageButton("Return to Accounts")}
+                    {PageButton("Return to Accounts")}
                 </Link>
             </div>
         </div>

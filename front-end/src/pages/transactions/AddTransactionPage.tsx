@@ -3,14 +3,11 @@ import axios from "axios";
 import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import {CategoryDropDown} from "../../components/CategoryDropDown";
 import {Category} from "../../types/CategoryType";
-import {Transaction} from "../../types/TransactionType";
-import {TransactionPageButton} from "../../components/Buttons";
+import {PageButton} from "../../components/Buttons";
 
 export default function AddTransactionPage() {
 
     const navigate = useNavigate();
-
-
 
     const { id } = useParams() as { id: string };
     const account_id: number = +id
@@ -129,10 +126,10 @@ export default function AddTransactionPage() {
                 <CategoryDropDown sendCategoryToTransaction = {handleDataFromCategoryDropDownComponent} flowType={transaction.flowType}/>
                 <br />
                 <div className="flex justify-around mt-6">
-                    {TransactionPageButton("Submit")}
+                    {PageButton("Submit")}
                     <Link to={`/accounts/${account_id}/transactions`}
                           state={{iban: iban}}>
-                        {TransactionPageButton("Cancel")}
+                        {PageButton("Cancel")}
                     </Link>
                 </div>
             </form>
