@@ -28,19 +28,21 @@ export function Form(props: FormProps) {
             </div>
             <form className="text-bodyColor180 flex flex-col items-center justify-center content-center w-full">
                 <div className="pb-8 w-full">
-                    <label htmlFor="username">Username</label>
-                    <br/>
-                    <input
-                        className="input w-full font-bold"
-                        type="text"
-                        name="username"
-                        id="username"
-                        autoComplete="off"
-                        onChange={(e) => props.setUsername(e.target.value)}
-                        required/>
+                    <label htmlFor="username">Username
+                        <br/>
+                            <input
+                                className="input w-full font-bold"
+                                type="text"
+                                name="username"
+                                id="username"
+                                autoComplete="off"
+                                onChange={(e) => props.setUsername(e.target.value)}
+                                required/>
+                    </label>
                 </div>
                 <div className="pb-8 w-full">
-                    <label htmlFor="password">Password </label>
+                    <label htmlFor="password">
+                        Password
                     <br/>
                     <div className="relative">
                         <span className="absolute right-0.5 bottom-1.5 text-baseColor cursor-pointer"
@@ -55,6 +57,7 @@ export function Form(props: FormProps) {
                             required/>
                     </div>
                     <small>{props.passComment}</small>
+                    </label>
                 </div>
 
                 <input

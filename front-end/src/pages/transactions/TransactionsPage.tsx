@@ -3,6 +3,7 @@ import axios from "axios";
 import {Link, useLocation, useParams} from "react-router-dom";
 import type {Transaction} from "../../types/TransactionType";
 import {PageButton} from "../../components/Buttons";
+import {FaRegTrashCan} from "react-icons/fa6";
 
 export default function TransactionsPage() {
 
@@ -38,7 +39,7 @@ export default function TransactionsPage() {
                 <td>{transaction.localDate}</td>
                 <td>{transaction.footprint}</td>
                 <td>
-                    <button className="text-black" onClick={()=>deleteTransaction(transaction.id)}>&#128465;</button>
+                    <button className="text-darkColor160 hover:text-baseColor ml-6" onClick={()=>deleteTransaction(transaction.id)}><FaRegTrashCan/></button>
                 </td>
             </tr>
         )
@@ -50,7 +51,7 @@ export default function TransactionsPage() {
     }
 
     return (
-        <div className="flex items-center justify-center flex-col bg-white/90 shadow-xl rounded-lg m-auto py-12 px-40 text-bodyColor180">
+        <div className="flex items-center justify-center flex-col bg-white/90 shadow-xl rounded-lg m-auto py-20 pl-40 pr-16 text-bodyColor180">
             <h1 className="title">Transactions</h1>
             <table className="text-left mb-20">
                 <p>Account:&nbsp;{iban}</p>

@@ -21,7 +21,7 @@
 /*Headings*/
 
 .title {
-  @apply text-baseColor mb-6 font-bold text-2xl
+  @apply text-baseColor font-bold text-2xl mb-6 text-center
 }
 /*Text*/
 body {

@@ -27,6 +27,7 @@ public class AccountController {
 
     @PostMapping("/add")
     public void saveAccount(@RequestBody Account account, Principal principal) {
+        System.out.println("Principal: " + principal);
 //        System.out.println(("Received account data: " + account.toString()));
         System.out.println("--------- Received account data: " + account);
         Long nextAccountId = accountService.findMaxAccountId() + 1;
