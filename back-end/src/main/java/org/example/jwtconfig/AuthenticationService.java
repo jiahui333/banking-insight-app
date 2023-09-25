@@ -23,6 +23,8 @@ public class AuthenticationService {
     @Autowired
     JwtService jwtService;
 
+    Boolean isPasswordValid;
+
 
     private final AuthenticationManager authenticationManager;
 
@@ -36,19 +38,23 @@ public class AuthenticationService {
         return new AuthenticationResponse(jwtTokenRegister);
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(User user) {
         try{
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
+                        user.getUsername(),
+                        user.getPassword()
                 )
         );
         } catch (Exception e) {
             System.out.println("Somethings goes wrong:"+e);
         }
-        User authenticatedUser = userRepo.findByUsername(request.getUsername());
-        boolean isPasswordValid = request.getPassword().equals(authenticatedUser.getPassword());
+        User authenticatedUser = userRepo.findByUsername(user.getUsername());
+        if (user.getUsername().equals("rus")) {
+            isPasswordValid = user.getPassword().equals(authenticatedUser.getPassword());
+        } else {
+            isPasswordValid = passwordEncoder.matches(user.getPassword(), authenticatedUser.getPassword());
+        }
         if (!isPasswordValid) {
             throw new BadCredentialsException("Invalid username or password");
         }
