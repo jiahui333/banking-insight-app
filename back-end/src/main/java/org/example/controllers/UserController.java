@@ -26,10 +26,4 @@ public class UserController {
         userService.saveUser(user);
     }
 
-
-//    @PutMapping
-//    public void putUser(String oldUsername, String password, String newUsername) throws NoSuchObjectException {
-//        userService.changeUsername(oldUsername, password, newUsername);
-//    }
-
 }

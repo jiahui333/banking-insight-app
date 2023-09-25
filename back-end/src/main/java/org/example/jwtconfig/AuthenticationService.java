@@ -26,10 +26,10 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
-        User user = new User();
-        user.setUsername(request.getUsername());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+    public AuthenticationResponse register(User user) {
+//        User user = new User();
+//        user.setUsername(user.getUsername());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
         User savedUser = userRepo.save(user);
         String jwtTokenRegister = jwtService.generateToken(savedUser);
@@ -43,7 +43,8 @@ public class AuthenticationService {
                         request.getUsername(),
                         request.getPassword()
                 )
-        );} catch (Exception e) {
+        );
+        } catch (Exception e) {
             System.out.println("Somethings goes wrong:"+e);
         }
         User authenticatedUser = userRepo.findByUsername(request.getUsername());

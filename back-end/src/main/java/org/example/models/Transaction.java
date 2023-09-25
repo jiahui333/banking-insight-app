@@ -89,12 +89,12 @@ public class Transaction {
         this.category = category;
     }
 
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "IBAN='" + account.getIban() + "'" +
-                ", amount=" + amount +
-                ", type=" + flowType +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Transaction{" +
+//                "IBAN='" + account.getIban() + "'" +
+//                ", amount=" + amount +
+//                ", type=" + flowType +
+//                '}';
+//    }
 }

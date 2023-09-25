@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class Account {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
