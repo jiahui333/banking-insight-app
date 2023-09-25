@@ -30,9 +30,6 @@ public class AccountController {
         System.out.println("Principal: " + principal);
 //        System.out.println(("Received account data: " + account.toString()));
         System.out.println("--------- Received account data: " + account);
-        Long nextAccountId = accountService.findMaxAccountId() + 1;
-        System.out.println("---the next id is:" + nextAccountId);
-        account.setId(nextAccountId);
         User currentUser = userService.findByUsername(principal.getName());
         account.setUser(currentUser);
         System.out.println("---the account id is set to" + account.getId());

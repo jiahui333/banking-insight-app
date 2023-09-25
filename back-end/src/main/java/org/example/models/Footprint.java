@@ -1,5 +1,8 @@
 package org.example.models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,6 +18,11 @@ public class Footprint {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
+
     @Column
     private LocalDate date;
 
@@ -28,6 +36,10 @@ public class Footprint {
 
     @Column
     private BigDecimal amount;
+
+//    public User getUser() {
+//        return user;
+//    }
 
     public Long getId() {
         return id;
@@ -49,5 +61,7 @@ public class Footprint {
         this.category = category;
     }
 
-
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

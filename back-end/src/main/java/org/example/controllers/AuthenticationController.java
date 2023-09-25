@@ -3,7 +3,6 @@ package org.example.controllers;
 import org.example.jwtconfig.AuthenticationRequest;
 import org.example.jwtconfig.AuthenticationResponse;
 import org.example.jwtconfig.AuthenticationService;
-import org.example.jwtconfig.RegisterRequest;
 import org.example.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

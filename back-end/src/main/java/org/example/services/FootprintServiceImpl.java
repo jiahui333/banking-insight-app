@@ -2,11 +2,13 @@ package org.example.services;
 
 import org.example.models.Footprint;
 import org.example.models.Transaction;
+import org.example.models.User;
 import org.example.repositories.FootprintRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.security.Principal;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +27,7 @@ public class FootprintServiceImpl implements FootprintService {
    private Map<String, Long> footprintVariableConstantsMap;
 
     @Override
-    public BigDecimal saveAndReturnFootprintPerTrans(Transaction transaction) {
+    public BigDecimal saveAndReturnFootprintPerTrans(Transaction transaction, User user) {
         for (Map.Entry<String, Long> entry : footprintVariableConstantsMap.entrySet()) {
             if (Objects.equals(entry.getKey(), transaction.getCategory().getName())) {
                 footprintVariable = entry.getValue();
@@ -36,13 +38,14 @@ public class FootprintServiceImpl implements FootprintService {
         footprint.setAmount(footprintAmount);
         footprint.setDate(transaction.getLocalDate());
         footprint.setCategory(transaction.getCategory());
+        footprint.setUser(user);
         footprintRepo.save(footprint);
         return footprintAmount;
     }
 
     @Override
-    public Map<String, BigDecimal> calculateCategoryFootprintMap() {
-        List<Footprint> footprintList = footprintRepo.findAll();
+    public Map<String, BigDecimal> calculateCategoryFootprintMap(User user) {
+        List<Footprint> footprintList = footprintRepo.findAllByUser(user);
         Map<String, BigDecimal> categoryAmountMap = new HashMap<>();
 
         for (Footprint footprint : footprintList) {
@@ -60,8 +63,8 @@ public class FootprintServiceImpl implements FootprintService {
     }
 
     @Override
-    public Map<String, BigDecimal> calculateYearMonthFootprintMap() {
-        List<Footprint> footprintList = footprintRepo.findAll();
+    public Map<String, BigDecimal> calculateYearMonthFootprintMap(User user) {
+        List<Footprint> footprintList = footprintRepo.findAllByUser(user);
         Map<String, BigDecimal> dateAmountMap = new HashMap<>();
 
         for (Footprint footprint : footprintList) {
