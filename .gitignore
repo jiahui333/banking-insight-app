@@ -1,6 +1,7 @@
 /back-end/target/
 /front-end/node_modules/
 /front-end/build/
-/back-end/src/main/resources/
 /back-end/.idea/
 .DS_Store
+.idea
+*.iml
