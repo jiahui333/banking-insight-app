@@ -20,7 +20,7 @@ RUN --mount=type=secret,id=database_secret,dst=/etc/secrets/database_secret \
     bash -c 'SECRET=$(cat /etc/secrets/database_secret) && sed -i "s|\${database_secret}|$SECRET|" src/main/resources/application.properties && mvn clean package -DskipTests'
 
 FROM openjdk:11-jdk-slim-sid
-COPY --from=build /app/target/banking-insights-app-backend-0.0.1-SNAPSHOT.jar banking-insights-app-backend.jar
+COPY --from=build /target/banking-insights-app-backend-0.0.1-SNAPSHOT.jar banking-insights-app-backend.jar
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "banking-insights-app-backend.jar"]
