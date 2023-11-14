@@ -7,7 +7,7 @@ export function FootprintPerDateTable() {
     const [DateFootprintPairs, setDateFootprintPairs] = useState<{[date: string]: number}>({});
 
     async function loadFootprintPerYearMonth() {
-        const response = await axios.get(`http://localhost:8080/footprint/per-year-month`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
+        const response = await axios.get(`https://greeny-insight-backend.fly.dev/footprint/per-year-month`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
         setDateFootprintPairs(response.data);
         console.log(response.data)
     }

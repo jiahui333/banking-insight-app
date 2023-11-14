@@ -18,7 +18,7 @@ export default function LogInPage() {
             "username": username,
             "password": password
         }
-       axios.post("http://localhost:8080/user/authenticate", requestBody)
+       axios.post("https://greeny-insight-backend.fly.dev/user/authenticate", requestBody)
             .then(res => {
                 const jwt = res.data.jwtToken
                 setJwt(jwt)

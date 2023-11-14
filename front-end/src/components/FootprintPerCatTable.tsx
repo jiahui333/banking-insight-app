@@ -7,7 +7,7 @@ export function FootprintPerCatTable() {
     const [categoryFootprintPairs, setCategoryFootprintPairs] = useState<{[categoryName: string]: number}>({});
 
     async function loadFootprintPerCategory() {
-        const response = await axios.get(`http://localhost:8080/footprint/per-category`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
+        const response = await axios.get(`https://greeny-insight-backend.fly.dev/footprint/per-category`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
         setCategoryFootprintPairs(response.data);
     }
 

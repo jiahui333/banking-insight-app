@@ -18,7 +18,7 @@ export default function TransactionsPage() {
         loadTransactions(account_id)},[account_id]);
 
     const loadTransactions = (account_id: number) => {
-        axios.get(`http://localhost:8080/accounts/${account_id}/transactions`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
+        axios.get(`https://greeny-insight-backend.fly.dev/accounts/${account_id}/transactions`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
             .then(res =>{
                 setTransactions(res.data)
                 console.log(res.data)
@@ -46,7 +46,7 @@ export default function TransactionsPage() {
     })
 
     const deleteTransaction = (transaction_id: number) => {
-        axios.delete(`http://localhost:8080/accounts/${account_id}/transactions/${transaction_id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
+        axios.delete(`https://greeny-insight-backend.fly.dev/accounts/${account_id}/transactions/${transaction_id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
             .then(r => loadTransactions(account_id))
     }
 

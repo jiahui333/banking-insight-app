@@ -13,7 +13,7 @@ export default function AddAccountPage() {
 
     async function onSubmitForm (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        await axios.post(`http://localhost:8080/accounts/add`,
+        await axios.post(`https://greeny-insight-backend.fly.dev/accounts/add`,
             {
                 iban: iban,
                 balance: balance

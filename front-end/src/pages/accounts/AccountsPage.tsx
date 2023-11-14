@@ -16,7 +16,7 @@ export default function AccountsPage() {
 
     const loadAccounts = () => {
         const account_jwt = localStorage.getItem("jwt");
-        axios.get('http://localhost:8080/accounts', { headers: { Authorization: `Bearer ${account_jwt}`}})
+        axios.get('https://greeny-insight-backend.fly.dev/accounts', { headers: { Authorization: `Bearer ${account_jwt}`}})
             .then(res =>{
                 setAccounts(res.data)
                 console.log(res.data)
@@ -25,7 +25,7 @@ export default function AccountsPage() {
     }
 
     const deleteAccount = (account_id: number) => {
-        axios.delete(`http://localhost:8080/accounts/${account_id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}}).
+        axios.delete(`https://greeny-insight-backend.fly.dev/${account_id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}}).
         then(() => loadAccounts())
     }
 

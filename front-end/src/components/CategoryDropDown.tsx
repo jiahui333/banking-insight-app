@@ -8,7 +8,7 @@ export function CategoryDropDown(props: TransactionProps): JSX.Element {
 
     async function fetchCategories () {
         try {
-            const response = await axios.get<Category[]>(`http://localhost:8080/categories/${props.flowType}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
+            const response = await axios.get<Category[]>(`https://greeny-insight-backend.fly.dev/categories/${props.flowType}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}});
             setCategories(response.data);
             console.log(categories);
         } catch (error) {

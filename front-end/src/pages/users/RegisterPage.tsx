@@ -34,7 +34,7 @@ export default function RegisterPage() {
                 "username": username,
                 "password": password
             }
-            axios.post("http://localhost:8080/user/register", requestBody)
+            axios.post("https://greeny-insight-backend.fly.dev/user/register", requestBody)
                 .then(res => {
                     const jwt = res.data.jwtToken
                     setJwt(JSON.stringify(res.data.jwtToken))
