@@ -1,4 +1,4 @@
-INSERT INTO "public"."users" ("id", "password", "username", "role") VALUES (1, 'pass123', 'rus', 'USER');
+INSERT INTO "public"."users" ("id", "password", "username", "role") VALUES (1, 'pass1234', 'rus', 'USER');
 SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));
 
 INSERT INTO "public"."accounts" ("id", "balance", "iban", "user_id") VALUES (1, 3000, 'NL3000', 1);
